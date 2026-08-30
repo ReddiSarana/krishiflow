@@ -205,16 +205,22 @@ export const SmsGatewaySimulator: React.FC<SmsGatewaySimulatorProps> = ({
                 + Book Tomato (50 Qtl)
               </button>
               <button
+                onClick={() => handleSend('BOOK PADDY 60 NIZAMABAD')}
+                className="px-2.5 py-1 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-500/30 text-emerald-300 text-[10px] font-semibold whitespace-nowrap"
+              >
+                🌾 ధాన్యం బుకింగ్ (Paddy)
+              </button>
+              <button
                 onClick={() => handleSend('STATUS KRISHI-1001')}
                 className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-semibold whitespace-nowrap"
               >
-                🔍 Check Status
+                🔍 స్థితి తనిఖీ (Status)
               </button>
               <button
                 onClick={() => handleSend('DELAY 30')}
                 className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-semibold whitespace-nowrap"
               >
-                ⏳ Request Delay
+                ⏳ ఆలస్యం (Delay)
               </button>
             </div>
 

@@ -8,13 +8,14 @@ import {
   Languages, 
   RefreshCw,
   Cpu,
-  UserCheck
+  UserCheck,
+  TreeDeciduous
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 interface NavbarProps {
-  activeTab: 'farmer' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth';
-  setActiveTab: (tab: 'farmer' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth') => void;
+  activeTab: 'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth';
+  setActiveTab: (tab: 'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth') => void;
   language: string;
   setLanguage: (lang: string) => void;
   onResetDemo: () => void;
@@ -51,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 hidden sm:block">
-                Dynamic Agri-Logistics & Operations Research Queue Orchestration
+                Dynamic Agri-Logistics & Telangana Crops Knowledge Explorer
               </p>
             </div>
           </div>
@@ -68,6 +69,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Sprout className="h-4 w-4" />
               <span>Farmer PWA</span>
+            </button>
+
+            {/* NEW TELANGANA CROPS TAB */}
+            <button
+              onClick={() => setActiveTab('telangana')}
+              className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
+                activeTab === 'telangana'
+                  ? 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-md shadow-teal-900/40 glow-emerald'
+                  : 'text-teal-400 hover:text-teal-200 hover:bg-teal-500/10'
+              }`}
+            >
+              <TreeDeciduous className="h-4 w-4 text-teal-300" />
+              <span>🌾 Telangana Crops</span>
+              <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-teal-400/20 text-teal-200">33 Districts</span>
             </button>
 
             <button
@@ -191,6 +206,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Sprout className="h-3.5 w-3.5" />
             <span>Farmer PWA</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('telangana')}
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
+              activeTab === 'telangana' ? 'bg-teal-600 text-white' : 'bg-slate-900 text-teal-400'
+            }`}
+          >
+            <TreeDeciduous className="h-3.5 w-3.5" />
+            <span>🌾 Telangana Crops</span>
           </button>
           <button
             onClick={() => setActiveTab('auth')}

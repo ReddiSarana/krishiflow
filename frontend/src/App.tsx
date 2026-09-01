@@ -6,13 +6,14 @@ import { SmsGatewaySimulator } from './components/SmsGatewaySimulator';
 import { SimulationArena } from './components/SimulationArena';
 import { CloudDeployModal } from './components/CloudDeployModal';
 import { AuthPortal } from './components/auth/AuthPortal';
+import { TelanganaCropsWindow } from './components/TelanganaCropsWindow';
 import { AuthProvider } from './context/AuthContext';
 import { api } from './services/api';
 import { CropProfile, DigitalPass, ProcurementHub, NotificationItem, SimulationResult, SlotRequest, QueueStage } from './types';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export function AppContent() {
-  const [activeTab, setActiveTab] = useState<'farmer' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth'>('farmer');
+  const [activeTab, setActiveTab] = useState<'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth'>('farmer');
   const [language, setLanguage] = useState<string>('en');
   
   const [crops, setCrops] = useState<CropProfile[]>([]);
@@ -164,6 +165,15 @@ export function AppContent() {
 
       {/* Main Content Area */}
       <main className="flex-1 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 w-full">
+        {activeTab === 'telangana' && (
+          <TelanganaCropsWindow
+            onSelectCropForBooking={(cropName) => {
+              setActiveTab('farmer');
+              showToast(`Pre-selected ${cropName} for Delivery Booking`, 'info');
+            }}
+          />
+        )}
+
         {activeTab === 'auth' && (
           <AuthPortal />
         )}
@@ -237,7 +247,7 @@ export function AppContent() {
             <span>&bull; Powered by Google OR-Tools & Python FastAPI</span>
           </div>
           <div>
-            Built for CSBS Hackathon & Agri-Supply Chain Optimization
+            Built for CSBS Hackathon & Telangana Agri-Supply Chain Optimization
           </div>
         </div>
       </footer>

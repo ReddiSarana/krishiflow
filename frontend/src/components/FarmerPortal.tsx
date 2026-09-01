@@ -25,6 +25,7 @@ interface FarmerPortalProps {
   onBookSlot: (req: SlotRequest) => Promise<DigitalPass | null>;
   activePass: DigitalPass | null;
   setActivePass: (pass: DigitalPass | null) => void;
+  onNavigateToAuth?: () => void;
 }
 
 const UI_TEXT = {
@@ -160,7 +161,8 @@ export const FarmerPortal: React.FC<FarmerPortalProps> = ({
   language,
   onBookSlot,
   activePass,
-  setActivePass
+  setActivePass,
+  onNavigateToAuth
 }) => {
   const t = UI_TEXT[language as keyof typeof UI_TEXT] || UI_TEXT.en;
 
@@ -227,7 +229,16 @@ export const FarmerPortal: React.FC<FarmerPortalProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center gap-3 self-start md:self-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 self-start md:self-auto">
+            {onNavigateToAuth && (
+              <button
+                onClick={onNavigateToAuth}
+                className="px-4 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-900/40 flex items-center justify-center space-x-2 transition-all active:scale-95"
+              >
+                <ShieldCheck className="w-4 h-4" />
+                <span>Kisan Sign In / Register</span>
+              </button>
+            )}
             <div className="px-4 py-3 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-right">
               <div className="text-[11px] text-slate-400 font-medium">Active Mandi Hub</div>
               <div className="text-sm font-bold text-emerald-400">Indore Central Complex</div>

@@ -21,15 +21,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>({
-    id: 'KF_78902',
-    name: 'Ramesh Patel (Kisan)',
-    email: 'ramesh.farmer@krishiflow.in',
-    phone: '+91 98765 43210',
-    role: 'farmer',
-    farmLocation: 'Indore Mandi Hub, Bay 3',
-    createdAt: new Date().toISOString(),
-  });
+  const [user, setUser] = useState<User | null>(null);
   const [currentScreen, setCurrentScreen] = useState<AuthScreen>('login');
   const [deviceMode, setDeviceMode] = useState<DeviceMode>('desktop');
   const [isBiometricModalOpen, setIsBiometricModalOpen] = useState<boolean>(false);

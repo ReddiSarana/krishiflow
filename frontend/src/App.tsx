@@ -175,6 +175,7 @@ export function AppContent() {
             onBookSlot={handleBookSlot}
             activePass={activePass}
             setActivePass={setActivePass}
+            onNavigateToAuth={() => setActiveTab('auth')}
           />
         )}
 

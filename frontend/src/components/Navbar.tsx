@@ -157,6 +157,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               </select>
             </div>
 
+            {/* Sign In / Register Quick Access Button */}
+            <button
+              onClick={() => setActiveTab('auth')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all shadow-md ${
+                user
+                  ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-900/60'
+                  : 'bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-emerald-900/40 glow-emerald'
+              }`}
+            >
+              <UserCheck className="h-4 w-4" />
+              <span>{user ? user.name.split(' ')[0] : 'Sign In / Register'}</span>
+            </button>
+
             {/* Reset Demo Button */}
             <button
               onClick={onResetDemo}

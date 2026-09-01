@@ -5,12 +5,14 @@ import { HubCommandCenter } from './components/HubCommandCenter';
 import { SmsGatewaySimulator } from './components/SmsGatewaySimulator';
 import { SimulationArena } from './components/SimulationArena';
 import { CloudDeployModal } from './components/CloudDeployModal';
+import { AuthPortal } from './components/auth/AuthPortal';
+import { AuthProvider } from './context/AuthContext';
 import { api } from './services/api';
 import { CropProfile, DigitalPass, ProcurementHub, NotificationItem, SimulationResult, SlotRequest, QueueStage } from './types';
-import { Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
+import { CheckCircle2, AlertCircle } from 'lucide-react';
 
-export function App() {
-  const [activeTab, setActiveTab] = useState<'farmer' | 'hub' | 'sms' | 'arena' | 'deploy'>('farmer');
+export function AppContent() {
+  const [activeTab, setActiveTab] = useState<'farmer' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth'>('farmer');
   const [language, setLanguage] = useState<string>('en');
   
   const [crops, setCrops] = useState<CropProfile[]>([]);
@@ -161,7 +163,11 @@ export function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 pb-16">
+      <main className="flex-1 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 w-full">
+        {activeTab === 'auth' && (
+          <AuthPortal />
+        )}
+
         {activeTab === 'farmer' && (
           <FarmerPortal
             crops={crops}
@@ -223,7 +229,7 @@ export function App() {
       )}
 
       {/* Footer */}
-      <footer className="glass-panel border-t border-slate-900 py-6 text-center text-xs text-slate-500">
+      <footer className="glass-panel border-t border-slate-900 py-6 text-center text-xs text-slate-500 mt-auto">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
             <span className="font-bold text-slate-300">KrishiFlow (AgriSlot)</span>
@@ -239,4 +245,10 @@ export function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}

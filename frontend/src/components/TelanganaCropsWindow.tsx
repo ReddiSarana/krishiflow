@@ -37,7 +37,9 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
     'Oilseeds',
     'Fruits',
     'Vegetables',
-    'Spices & Condiments'
+    'Leafy Greens',
+    'Spices & Condiments',
+    'Medicinal & Agroforestry'
   ];
 
   const allDistricts = useMemo(() => {
@@ -59,7 +61,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
 
       const matchesCategory = selectedCategory === 'All' || crop.category === selectedCategory;
       const matchesSeason = selectedSeason === 'All' || crop.season.includes(selectedSeason);
-      const matchesWater = selectedWater === 'All' || crop.waterRequirement === selectedWater;
+      const matchesWater = selectedWater === 'All' || crop.waterRequirement.toLowerCase().includes(selectedWater.toLowerCase());
       const matchesDistrict = selectedDistrict === 'All' || crop.majorDistricts.some(d => d.includes(selectedDistrict));
 
       return matchesSearch && matchesCategory && matchesSeason && matchesWater && matchesDistrict;
@@ -78,25 +80,25 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold mb-3 border border-emerald-500/30">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Telangana State Agri-Horticulture Directory (తెలంగాణ పంటల విజ్ఞాన వేదిక)</span>
+              <span>Telangana State Complete Agri-Horticulture Directory (తెలంగాణ పంటల విజ్ఞాన వేదిక)</span>
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Crops, Fruits, Vegetables & Flora of Telangana
+              Crops, Fruits, Vegetables, Millets & Flora of Telangana
             </h1>
             <p className="text-emerald-100/80 text-xs sm:text-sm mt-2 leading-relaxed">
-              Explore the rich agricultural diversity across all 33 districts of Telangana. From GI-tagged Tandur Red Gram and Warangal Teja Chilli to Nizamabad Turmeric and Jagtial Banganapalli Mangoes, check sowing calendars, live mandi price benchmarks, and book dynamic delivery passes.
+              Explore the rich agricultural diversity across all 33 districts of Telangana. From GI-tagged Tandur Red Gram, Warangal Teja Chilli, and Nizamabad Turmeric to Sri Dhanya Millets, Jagtial Mangoes, Nalgonda Sweet Oranges, Sericulture and Agroforestry.
             </p>
           </div>
 
           {/* Quick Telemetry Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 shrink-0">
             <div className="p-3 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-center">
-              <div className="text-lg font-black text-emerald-400">25+</div>
-              <div className="text-[10px] text-slate-400">Cataloged Crops</div>
+              <div className="text-lg font-black text-emerald-400">{TELANGANA_CROPS_DATA.length}+</div>
+              <div className="text-[10px] text-slate-400">All Varieties</div>
             </div>
             <div className="p-3 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-center">
-              <div className="text-lg font-black text-amber-400">3 GI Tags</div>
-              <div className="text-[10px] text-slate-400">Heritage Produce</div>
+              <div className="text-lg font-black text-amber-400">9 Categories</div>
+              <div className="text-[10px] text-slate-400">Grains to Agroforestry</div>
             </div>
             <div className="p-3 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-center col-span-2 sm:col-span-1">
               <div className="text-lg font-black text-teal-400">33</div>

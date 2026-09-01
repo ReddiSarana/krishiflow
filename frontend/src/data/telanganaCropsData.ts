@@ -2,7 +2,7 @@ export interface TelanganaCrop {
   id: string;
   name: string;
   teluguName: string;
-  category: 'Cereals & Millets' | 'Pulses' | 'Commercial & Cash Crops' | 'Oilseeds' | 'Fruits' | 'Vegetables' | 'Spices & Condiments' | 'Medicinal & Plantation';
+  category: 'Cereals & Millets' | 'Pulses' | 'Commercial & Cash Crops' | 'Oilseeds' | 'Fruits' | 'Vegetables' | 'Leafy Greens' | 'Spices & Condiments' | 'Medicinal & Agroforestry';
   icon: string;
   popularVarieties: string[];
   majorDistricts: string[];
@@ -19,16 +19,18 @@ export interface TelanganaCrop {
 }
 
 export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
-  // CEREALS & GRAINS
+  // ==========================================
+  // 1. CEREALS & MILLETS (ధాన్యాలు & చిరుధాన్యాలు)
+  // ==========================================
   {
     id: 'paddy-telangana-sona',
     name: 'Paddy / Rice (Telangana Sona)',
     teluguName: 'వరి (తెలంగాణ సోనా / RNR 15048)',
     category: 'Cereals & Millets',
     icon: '🌾',
-    popularVarieties: ['Telangana Sona (RNR 15048)', 'BPT 5204 (Samba Mahsuri)', 'KNM 118', 'JGL 3844'],
-    majorDistricts: ['Nalgonda', 'Karimnagar', 'Nizamabad', 'Khammam', 'Suryapet', 'Warangal'],
-    season: 'Both Seasons',
+    popularVarieties: ['Telangana Sona (RNR 15048)', 'BPT 5204 (Samba Mahsuri)', 'KNM 118', 'JGL 3844', 'MTU 1010'],
+    majorDistricts: ['Nalgonda', 'Karimnagar', 'Nizamabad', 'Khammam', 'Suryapet', 'Warangal', 'Peddapalli'],
+    season: 'Both Seasons (Kharif & Rabi)',
     soilType: 'Clayey Loam & Black Soil with good water retention',
     durationDays: '125 - 140 Days',
     avgYieldPerAcre: '28 - 35 Quintals',
@@ -46,8 +48,8 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     category: 'Cereals & Millets',
     icon: '🌽',
     popularVarieties: ['DHM 117', 'Pioneer 3396', 'NK 6240', 'DKC 9108'],
-    majorDistricts: ['Kamareddy', 'Nizamabad', 'Medak', 'Siddipet', 'Warangal Rural'],
-    season: 'Both Seasons',
+    majorDistricts: ['Kamareddy', 'Nizamabad', 'Medak', 'Siddipet', 'Warangal Rural', 'Jagtial'],
+    season: 'Both Seasons (Kharif & Rabi)',
     soilType: 'Well-drained Sandy Loam to Medium Black Soil',
     durationDays: '100 - 115 Days',
     avgYieldPerAcre: '30 - 38 Quintals',
@@ -60,7 +62,7 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
   },
   {
     id: 'jowar-sorghum',
-    name: 'Jowar / Great Millet',
+    name: 'Jowar / Sorghum (Great Millet)',
     teluguName: 'జొన్నలు (తెల్ల జొన్న / పచ్చ జొన్న)',
     category: 'Cereals & Millets',
     icon: '🥣',
@@ -76,6 +78,25 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     description: 'Drought-hardy traditional crop of Telangana drylands. High in dietary fiber, iron, and minerals, with skyrocketing urban demand.',
     keyBenefits: ['Extremely low water usage', 'Zero pest vulnerability', 'High fodder value for cattle'],
     procurementHub: 'Adilabad Tribal Market Hub'
+  },
+  {
+    id: 'bajra-pearl-millet',
+    name: 'Bajra / Pearl Millet',
+    teluguName: 'సజ్జలు',
+    category: 'Cereals & Millets',
+    icon: '🌾',
+    popularVarieties: ['ICTP 8203', 'HHB 67', 'Proagro 9444', 'GHB 558'],
+    majorDistricts: ['Mahabubnagar', 'Gadwal', 'Wanaparthy', 'Nalgonda'],
+    season: 'Kharif & Summer',
+    soilType: 'Sandy Loam & Red Shallow Soils',
+    durationDays: '75 - 85 Days',
+    avgYieldPerAcre: '12 - 18 Quintals',
+    mandiPriceRange: '₹2,500 - ₹3,100 / Qtl',
+    giTagOrSpecialty: 'High heat tolerance up to 45°C',
+    waterRequirement: 'Low',
+    description: 'Short-duration miracle crop suited for arid southern Telangana. High in magnesium, potassium, and amino acids.',
+    keyBenefits: ['Fast 80-day harvest', 'Extreme heat tolerance', 'Low investment per acre'],
+    procurementHub: 'Gadwal Agriculture Yard'
   },
   {
     id: 'ragi-finger-millet',
@@ -96,8 +117,48 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     keyBenefits: ['10x Calcium of Rice', 'Grows in poor soil conditions', 'Long storage lifespan without chemical treatment'],
     procurementHub: 'Mahabubnagar Millets Depot'
   },
+  {
+    id: 'foxtail-millet-korralu',
+    name: 'Foxtail Millet / Korralu',
+    teluguName: 'కొర్రలు (సిరిధాన్యాలు)',
+    category: 'Cereals & Millets',
+    icon: '🌾',
+    popularVarieties: ['SIA 3085', 'Suryanandi', 'Prathap', 'Co 7'],
+    majorDistricts: ['Mahabubnagar', 'Jogulamba Gadwal', 'Nagarkurnool', 'Vikarabad'],
+    season: 'Kharif & Summer',
+    soilType: 'Red Loam & Gravelly Soils',
+    durationDays: '70 - 80 Days',
+    avgYieldPerAcre: '8 - 12 Quintals',
+    mandiPriceRange: '₹4,200 - ₹5,800 / Qtl',
+    giTagOrSpecialty: 'Top Sri Dhanya Millet with high protein and low carbohydrate ratio',
+    waterRequirement: 'Low',
+    description: 'Premier health grain cultivated under the Telangana Millets Revival initiative. Ideal substitute for polished rice with low glycemic index.',
+    keyBenefits: ['75-day turnaround', 'Zero chemical fertilizers needed', 'High urban health brand value'],
+    procurementHub: 'Nagarkurnool Organic Market'
+  },
+  {
+    id: 'little-browntop-millets',
+    name: 'Browntop & Little Millet',
+    teluguName: 'అండుకొర్రలు & సామలు',
+    category: 'Cereals & Millets',
+    icon: '🌾',
+    popularVarieties: ['CLMV 1', 'OLM 203', 'Local Heritage'],
+    majorDistricts: ['Adilabad', 'Kumuram Bheem Asifabad', 'Mulugu', 'Vikarabad'],
+    season: 'Kharif (వానకాలం)',
+    soilType: 'Dryland Red & Hill Slope Soils',
+    durationDays: '75 - 90 Days',
+    avgYieldPerAcre: '6 - 10 Quintals',
+    mandiPriceRange: '₹6,500 - ₹9,500 / Qtl',
+    giTagOrSpecialty: 'Richest in dietary fiber (12.5%) among all Indian millets',
+    waterRequirement: 'Low',
+    description: 'Ancient indigenous millets preserved by tribal and dryland farmers of Telangana. Commanding highest retail prices in organic supermarkets.',
+    keyBenefits: ['Super-high fiber content', 'Drought and flood resilient', 'Premium farmer price'],
+    procurementHub: 'Utnoor Tribal Farmer Hub'
+  },
 
-  // PULSES
+  // ==========================================
+  // 2. PULSES (పప్పు ధాన్యాలు)
+  // ==========================================
   {
     id: 'tandur-red-gram',
     name: 'Tandur Red Gram / Pigeon Pea',
@@ -144,7 +205,7 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     icon: '🌱',
     popularVarieties: ['MGG 295', 'WGG 42', 'IPM 02-03', 'TM 96-2'],
     majorDistricts: ['Warangal', 'Medak', 'Siddipet', 'Khammam'],
-    season: 'Kharif (వానకాలం)',
+    season: 'Kharif & Summer',
     soilType: 'Well-drained Loamy to Light Black Soil',
     durationDays: '65 - 75 Days (Short Cycle)',
     avgYieldPerAcre: '6 - 9 Quintals',
@@ -155,16 +216,56 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     keyBenefits: ['Ultra-fast 70-day harvest', 'Excellent intercrop compatibility', 'High market price'],
     procurementHub: 'Warangal Enumamula Mandi'
   },
+  {
+    id: 'black-gram-urad',
+    name: 'Black Gram / Urad Dal',
+    teluguName: 'మినుములు (ఉద్ది పప్పు)',
+    category: 'Pulses',
+    icon: '🫘',
+    popularVarieties: ['PU 31', 'LBG 752', 'MBG 207', 'T 9'],
+    majorDistricts: ['Nizamabad', 'Adilabad', 'Khammam', 'Medak'],
+    season: 'Kharif & Rabi',
+    soilType: 'Black Clayey Loam Soil',
+    durationDays: '75 - 85 Days',
+    avgYieldPerAcre: '6 - 10 Quintals',
+    mandiPriceRange: '₹6,950 - ₹8,200 / Qtl',
+    giTagOrSpecialty: 'Essential staple for South Indian breakfast foods (Idli/Dosa)',
+    waterRequirement: 'Low',
+    description: 'High-protein pulse crop cultivated in rotation with rice. Critical raw material for regional food processing and flour mills.',
+    keyBenefits: ['Soil nitrogen fixing', 'Steady round-the-year food industry demand', 'Short growing season'],
+    procurementHub: 'Nizamabad & Khammam Pulse Market'
+  },
+  {
+    id: 'horse-gram-ulavalu',
+    name: 'Horse Gram / Ulavalu',
+    teluguName: 'ఉలవలు (ఉలవ చారు పప్పు)',
+    category: 'Pulses',
+    icon: '🫘',
+    popularVarieties: ['CRIDA 18R', 'AK 21', 'Local Brown'],
+    majorDistricts: ['Mahabubnagar', 'Nalgonda', 'Nagarkurnool', 'Vikarabad'],
+    season: 'Late Kharif / Rabi',
+    soilType: 'Poor, Shallow & Gravelly Red Soils',
+    durationDays: '90 - 110 Days',
+    avgYieldPerAcre: '5 - 8 Quintals',
+    mandiPriceRange: '₹4,800 - ₹6,500 / Qtl',
+    giTagOrSpecialty: 'Famous base for traditional Telugu delicacy "Ulavacharu" & kidney health',
+    waterRequirement: 'Low',
+    description: 'Extremely hardy drought legume capable of yielding in rocky and dry soils where no other crop survives. Renowned for ayurvedic kidney stone benefits.',
+    keyBenefits: ['Zero irrigation required (rainfed)', 'Therapeutic medicinal demand', 'High stamina fodder'],
+    procurementHub: 'Jadcherla & Mahabubnagar Mandi'
+  },
 
-  // COMMERCIAL & CASH CROPS
+  // ==========================================
+  // 3. COMMERCIAL & CASH CROPS (వాణిజ్య పంటలు)
+  // ==========================================
   {
     id: 'cotton-white-gold',
     name: 'Cotton (White Gold of Telangana)',
     teluguName: 'పత్తి (తెల్ల బంగారం)',
     category: 'Commercial & Cash Crops',
     icon: '☁️',
-    popularVarieties: ['Bollgard II Hybrids', 'RCH 659', 'Mallika', 'Ajeet 155'],
-    majorDistricts: ['Nalgonda', 'Adilabad', 'Warangal', 'Karimnagar', 'Khammam', 'Mahabubnagar'],
+    popularVarieties: ['Bollgard II Hybrids', 'RCH 659', 'Mallika', 'Ajeet 155', 'Brahma'],
+    majorDistricts: ['Nalgonda', 'Adilabad', 'Warangal', 'Karimnagar', 'Khammam', 'Mahabubnagar', 'Siddipet'],
     season: 'Kharif (వానకాలం)',
     soilType: 'Deep Black Cotton Soils (Regur)',
     durationDays: '150 - 180 Days',
@@ -215,6 +316,25 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     procurementHub: 'Nizamabad Turmeric Specialized Terminal'
   },
   {
+    id: 'sugarcane-bodhan',
+    name: 'Sugarcane',
+    teluguName: 'చెరకు (కబ్బ)',
+    category: 'Commercial & Cash Crops',
+    icon: '🎋',
+    popularVarieties: ['Co 86032', 'Co 0238', 'Co 6907', 'Co 8014'],
+    majorDistricts: ['Nizamabad (Bodhan)', 'Kamareddy', 'Medak', 'Sangareddy (Zaheerabad)'],
+    season: 'Eksali (12 Months) / Adsali (18 Months)',
+    soilType: 'Deep Fertile Alluvial & Clayey Loams',
+    durationDays: '300 - 365 Days',
+    avgYieldPerAcre: '40 - 60 Tons',
+    mandiPriceRange: '₹3,150 - ₹3,500 / Ton (FRP Mill Rate)',
+    giTagOrSpecialty: 'Historic sugar belt of Deccan (Nizam Sugar Factory region)',
+    waterRequirement: 'High',
+    description: 'Grown extensively along the Godavari and Manjira river canal networks. Feeds regional sugar mills, jaggery processing units, and ethanol distilleries.',
+    keyBenefits: ['High tonnage yield per acre', 'By-products used for bio-electricity & ethanol', 'Direct factory gate pricing'],
+    procurementHub: 'Bodhan & Zaheerabad Sugar Mills'
+  },
+  {
     id: 'oil-palm-telangana',
     name: 'Oil Palm',
     teluguName: 'ఆయిల్ పామ్ (నూనె తాటి)',
@@ -233,15 +353,36 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     keyBenefits: ['Assured buyback by processing mills', 'Recurring income for 25 years', 'Heavy state subsidy on drip & saplings'],
     procurementHub: 'Kothagudem Palm Processing Complex'
   },
+  {
+    id: 'mulberry-sericulture',
+    name: 'Mulberry & Silk (Sericulture)',
+    teluguName: 'మల్బరీ (పట్టు పరిశ్రమ)',
+    category: 'Commercial & Cash Crops',
+    icon: '🐛',
+    popularVarieties: ['V1', 'G4', 'S36'],
+    majorDistricts: ['Ranga Reddy', 'Mahabubnagar', 'Jangaon', 'Siddipet'],
+    season: 'Perennial (5-6 Silkworm Batches/Year)',
+    soilType: 'Deep Red & Sandy Loams with good aeration',
+    durationDays: 'Perennial Shrub',
+    avgYieldPerAcre: '600 - 800 kg Bivoltine Cocoons/year',
+    mandiPriceRange: '₹450 - ₹750 / kg Cocoon',
+    giTagOrSpecialty: 'Feeds famous Telangana handloom clusters (Pochampally Ikat & Gadwal Silk)',
+    waterRequirement: 'Medium',
+    description: 'Mulberry cultivation supports the world-famous Pochampally and Gadwal silk weaving industries. High monthly income from bivoltine silk cocoon production.',
+    keyBenefits: ['Monthly cash flow from cocoon batches', 'Direct link to handloom weavers', 'Sericulture Dept subsidies'],
+    procurementHub: 'Jangaon & Shadnagar Cocoon Markets'
+  },
 
-  // OILSEEDS
+  // ==========================================
+  // 4. OILSEEDS (నూనెగింజలు)
+  // ==========================================
   {
     id: 'groundnut-peanut',
     name: 'Groundnut / Peanut',
     teluguName: 'వేరుశనగ (పల్లీలు)',
     category: 'Oilseeds',
     icon: '🥜',
-    popularVarieties: ['Kadiri 6 (K6)', 'TAG 24', 'Dharani', 'TMV 2'],
+    popularVarieties: ['Kadiri 6 (K6)', 'TAG 24', 'Dharani', 'TMV 2', 'Kadiri Lepakshi'],
     majorDistricts: ['Mahabubnagar', 'Wanaparthy', 'Nagarkurnool', 'Gadwal', 'Vikarabad'],
     season: 'Rabi (యాసంగి)',
     soilType: 'Sandy Loam & Red Chalkas with loose texture',
@@ -281,7 +422,7 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     icon: '🌾',
     popularVarieties: ['Swetha (White)', 'Rajeshwari', 'YLM 11', 'Hima'],
     majorDistricts: ['Jagtial', 'Karimnagar', 'Warangal', 'Nalgonda'],
-    season: 'Rabi (యాసంగి)',
+    season: 'Rabi & Summer',
     soilType: 'Light Loamy & Sandy Soils with high drainage',
     durationDays: '80 - 90 Days',
     avgYieldPerAcre: '4 - 7 Quintals',
@@ -292,15 +433,55 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     keyBenefits: ['Very low water & fertilizer requirement', 'Premium market price (₹12k+/Qtl)', 'Zero bird/animal damage risk'],
     procurementHub: 'Jagtial & Karimnagar Mandi'
   },
+  {
+    id: 'castor-aamudam',
+    name: 'Castor / Ricinus',
+    teluguName: 'ఆముదం (చిట్టామందం)',
+    category: 'Oilseeds',
+    icon: '🫘',
+    popularVarieties: ['PCH 111', 'DCH 519', 'GCH 4', 'Jyothi'],
+    majorDistricts: ['Mahabubnagar', 'Nagarkurnool', 'Nalgonda', 'Wanaparthy'],
+    season: 'Kharif (వానకాలం)',
+    soilType: 'Red Sandy Loam & Poor Dryland Soils',
+    durationDays: '150 - 180 Days',
+    avgYieldPerAcre: '8 - 14 Quintals',
+    mandiPriceRange: '₹5,800 - ₹6,800 / Qtl',
+    giTagOrSpecialty: 'Key industrial lubricant & aviation grease raw material',
+    waterRequirement: 'Low',
+    description: 'Telangana is one of India\'s largest castor producers. The oil is non-edible and globally prized for high-grade industrial lubricants, paints, and cosmetics.',
+    keyBenefits: ['Thrives in low rainfall zones', 'Not eaten by cattle/wild animals', 'Long-term storage stability'],
+    procurementHub: 'Mahabubnagar Industrial Oil Yard'
+  },
+  {
+    id: 'sunflower-poddutirugudu',
+    name: 'Sunflower',
+    teluguName: 'పొద్దుతిరుగుడు',
+    category: 'Oilseeds',
+    icon: '🌻',
+    popularVarieties: ['KBSH 44', 'DRSH 1', 'Sunbred 275', 'PAC 36'],
+    majorDistricts: ['Nizamabad', 'Medak', 'Karimnagar', 'Siddipet'],
+    season: 'Rabi (యాసంగి)',
+    soilType: 'Black Medium to Deep Fertile Soils',
+    durationDays: '90 - 100 Days',
+    avgYieldPerAcre: '8 - 12 Quintals',
+    mandiPriceRange: '₹6,400 - ₹7,200 / Qtl',
+    giTagOrSpecialty: 'Heart-healthy polyunsaturated edible oil with high PUFA',
+    waterRequirement: 'Medium',
+    description: 'Golden winter blossom crop across Northern Telangana. High oil recovery (40-42%) with huge demand from edible oil refineries.',
+    keyBenefits: ['Short 90-day crop duration', 'High market price and edible demand', 'Beekeeping & honey synergy'],
+    procurementHub: 'Nizamabad & Siddipet Mandi'
+  },
 
-  // FRUITS (HORTICULTURE)
+  // ==========================================
+  // 5. FRUITS & HORTICULTURE (పండ్ల తోటలు)
+  // ==========================================
   {
     id: 'mango-banganapalli',
-    name: 'Mango (Banganapalli & Dasheri)',
+    name: 'Mango (Banganapalli & Himayat)',
     teluguName: 'మామిడి (బంగినపల్లి, రసాలు, హిమాయత్)',
     category: 'Fruits',
     icon: '🥭',
-    popularVarieties: ['Banganapalli (Benishan)', 'Himayat', 'Chinna Rasalu', 'Dasheri', 'Kesar'],
+    popularVarieties: ['Banganapalli (Benishan)', 'Himayat', 'Chinna Rasalu', 'Pedda Rasalu', 'Dasheri', 'Kesar'],
     majorDistricts: ['Jagtial', 'Nagarkurnool', 'Khammam', 'Mancherial', 'Ranga Reddy', 'Sangareddy'],
     season: 'Summer (వేసవి)',
     soilType: 'Deep Red Loam & Alluvial Soils',
@@ -371,6 +552,63 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     procurementHub: 'Balanagar & Shadnagar Fruit Yard'
   },
   {
+    id: 'papaya-red-lady',
+    name: 'Papaya (Red Lady 786)',
+    teluguName: 'బొప్పాయి (రెడ్ లేడీ)',
+    category: 'Fruits',
+    icon: '🥭',
+    popularVarieties: ['Taiwan Red Lady 786', 'Pusa Delicious', 'Coorg Honey Dew'],
+    majorDistricts: ['Mahabubnagar', 'Nalgonda', 'Khammam', 'Siddipet', 'Wanaparthy'],
+    season: 'Year-round Continuous Harvest',
+    soilType: 'Rich Well-drained Loam with high organic matter',
+    durationDays: '8 Months to First Harvest',
+    avgYieldPerAcre: '35 - 55 Tons',
+    mandiPriceRange: '₹14,000 - ₹26,000 / Ton',
+    giTagOrSpecialty: 'Very high yield fruit crop with weekly commercial harvesting',
+    waterRequirement: 'Medium',
+    description: 'Red Lady 786 papaya is a massive cash-spinner in Telangana irrigated zones. Fruits are thick, sweet, deep red fleshed, and highly transportable.',
+    keyBenefits: ['Massive tonnage per acre (40+ tons)', 'Weekly cash income for 2 years', 'High domestic table demand'],
+    procurementHub: 'Hyderabad Fruit Terminal'
+  },
+  {
+    id: 'pomegranate-danimma',
+    name: 'Pomegranate / Bhagwa',
+    teluguName: 'దానిమ్మ (భగ్వా / అరక్తా)',
+    category: 'Fruits',
+    icon: '🍎',
+    popularVarieties: ['Bhagwa (Sindhuri)', 'Arakta', 'Ganesh', 'Ruby'],
+    majorDistricts: ['Jogulamba Gadwal', 'Nagarkurnool', 'Nalgonda', 'Mahabubnagar'],
+    season: 'Hastha & Mrig Bahar (Winter/Spring)',
+    soilType: 'Light Red & Sandy Loam with deep drainage',
+    durationDays: 'Perennial (Harvest after 18-24 months)',
+    avgYieldPerAcre: '6 - 9 Tons',
+    mandiPriceRange: '₹70,000 - ₹1,30,000 / Ton',
+    giTagOrSpecialty: 'Export-grade ruby red arils with high market price realization',
+    waterRequirement: 'Low (Drip)',
+    description: 'Dry climate of Southern Telangana border is ideal for disease-free Bhagwa pomegranate cultivation, resulting in glossy, dark red arils with high sweetness.',
+    keyBenefits: ['High value export crop', 'Long post-harvest shelf life', 'Drip & solar irrigation compatible'],
+    procurementHub: 'Gadwal & Kurnool Agro Border Terminal'
+  },
+  {
+    id: 'banana-g9',
+    name: 'Banana (Grand Naine G9)',
+    teluguName: 'అరటి (గ్రాండ్ నైన్ / అమృతపాణి)',
+    category: 'Fruits',
+    icon: '🍌',
+    popularVarieties: ['Grand Naine (G9 Tissue Culture)', 'Amruthapani', 'Karpoora', 'Yelakki'],
+    majorDistricts: ['Khammam', 'Bhadradri Kothagudem', 'Nizamabad', 'Mahabubabad'],
+    season: 'Year-round Planting',
+    soilType: 'Rich Fertile Alluvial Soils with high moisture holding',
+    durationDays: '11 - 12 Months',
+    avgYieldPerAcre: '30 - 45 Tons',
+    mandiPriceRange: '₹12,000 - ₹22,000 / Ton',
+    giTagOrSpecialty: 'Tissue culture banana with high bunch weight (30-35 kg)',
+    waterRequirement: 'High',
+    description: 'Extensively cultivated along river basins with fertigation systems. Produces uniform, export-grade exportable bunches for northern Indian metros.',
+    keyBenefits: ['Guaranteed round-the-year demand', 'High bunch weight with tissue culture', 'Short 1-year cycle'],
+    procurementHub: 'Khammam Central Fruit Terminal'
+  },
+  {
     id: 'dragon-fruit-exotic',
     name: 'Dragon Fruit / Pitahaya',
     teluguName: 'డ్రాగన్ ఫ్రూట్ (కమలం పండు)',
@@ -389,17 +627,57 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     keyBenefits: ['₹6 - 9 Lakhs gross revenue per acre', 'Extreme drought resistance', 'High antioxidant wellness market'],
     procurementHub: 'Hyderabad Modern Agri Terminal'
   },
+  {
+    id: 'watermelon-muskmelon',
+    name: 'Watermelon & Muskmelon',
+    teluguName: 'పుచ్చకాయ & ఖర్బూజా',
+    category: 'Fruits',
+    icon: '🍉',
+    popularVarieties: ['Maxx (Black)', 'Kiran', 'Sugar Baby', 'Kundan Muskmelon'],
+    majorDistricts: ['Nalgonda', 'Mahabubnagar', 'Suryapet', 'Karimnagar', 'Mancherial'],
+    season: 'Summer (వేసవి - Dec to May)',
+    soilType: 'River Bed Sands & Sandy Loams',
+    durationDays: '70 - 85 Days',
+    avgYieldPerAcre: '20 - 30 Tons',
+    mandiPriceRange: '₹8,000 - ₹15,000 / Ton',
+    giTagOrSpecialty: 'High-speed 75-day summer cash crop',
+    waterRequirement: 'Medium (Drip/Mulching)',
+    description: 'Cultivated in the fertile river basins of Krishna, Godavari, and Musi. Summer thirst-quencher with high bulk volume trading.',
+    keyBenefits: ['Fast 75-day harvest', 'High return on investment', 'Direct truckload sales from field'],
+    procurementHub: 'Nalgonda & Hyderabad Summer Yards'
+  },
+  {
+    id: 'sapota-chiku',
+    name: 'Sapota / Chiku',
+    teluguName: 'సపోటా (కలపట్టి, క్రికెట్ బాల్)',
+    category: 'Fruits',
+    icon: '🥔',
+    popularVarieties: ['Kalipatti', 'Cricket Ball', 'PKM 1', 'DHS 2'],
+    majorDistricts: ['Ranga Reddy', 'Medak', 'Sangareddy', 'Mahabubnagar'],
+    season: 'Year-round Continuous Bearing',
+    soilType: 'Deep Alluvial & Sandy Clay Loam',
+    durationDays: 'Perennial Orchard',
+    avgYieldPerAcre: '8 - 14 Tons',
+    mandiPriceRange: '₹22,000 - ₹38,000 / Ton',
+    giTagOrSpecialty: 'Hardy perennial fruit with zero pest problems',
+    waterRequirement: 'Low to Medium',
+    description: 'Evergreen orchard tree that thrives in Telangana climate with regular sweet harvest. High market demand in fresh juice and milkshakes.',
+    keyBenefits: ['Very low maintenance', 'Continuous flowering and fruiting', 'Tolerates salinity and poor water'],
+    procurementHub: 'Bowenpally & Batasingaram Market'
+  },
 
-  // VEGETABLES
+  // ==========================================
+  // 6. VEGETABLES (కూరగాయలు)
+  // ==========================================
   {
     id: 'tomato-fresh',
     name: 'Tomato',
     teluguName: 'టమోటా',
     category: 'Vegetables',
     icon: '🍅',
-    popularVarieties: ['US 440', 'Abhinav', 'Arka Rakshak', 'Saaho 3251'],
+    popularVarieties: ['US 440', 'Abhinav', 'Arka Rakshak', 'Saaho 3251', 'Heemsohana'],
     majorDistricts: ['Ranga Reddy', 'Medak', 'Siddipet', 'Khammam', 'Adilabad'],
-    season: 'Both Seasons',
+    season: 'Both Seasons (Kharif & Rabi)',
     soilType: 'Rich Sandy Loam with organic compost',
     durationDays: '100 - 120 Days',
     avgYieldPerAcre: '180 - 250 Quintals',
@@ -430,11 +708,91 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     procurementHub: 'Mahabubnagar & Malakpet Wholesale Yard'
   },
   {
+    id: 'brinjal-eggplant',
+    name: 'Brinjal / Eggplant',
+    teluguName: 'వంకాయ (గుత్తి వంకాయ, నల్ల వంకాయ)',
+    category: 'Vegetables',
+    icon: '🍆',
+    popularVarieties: ['Gutti Vankaya Local', 'Pusa Purple Long', 'Arka Anand', 'Manjari Gota'],
+    majorDistricts: ['Ranga Reddy', 'Medchal', 'Siddipet', 'Warangal', 'Nalgonda'],
+    season: 'Year-round Cultivation',
+    soilType: 'Rich Loamy Soil with good drainage',
+    durationDays: '120 - 150 Days',
+    avgYieldPerAcre: '120 - 180 Quintals',
+    mandiPriceRange: '₹1,500 - ₹3,200 / Qtl',
+    giTagOrSpecialty: 'Core vegetable of Telangana cuisine (Gutti Vankaya Kura)',
+    waterRequirement: 'Medium',
+    description: 'Grown in every district for daily markets. Famous Telangana small round striped brinjal is prized for royal wedding curries and stuffing recipes.',
+    keyBenefits: ['Continuous picking every 4-5 days', 'High local market demand', 'Long harvest duration'],
+    procurementHub: 'Gudimalkapur & Bowenpally Mandi'
+  },
+  {
+    id: 'okra-bhendi',
+    name: 'Okra / Lady Finger',
+    teluguName: 'బెండకాయ',
+    category: 'Vegetables',
+    icon: '🥬',
+    popularVarieties: ['Radhika', 'Singham', 'Arka Anamika', 'Mahyco 10'],
+    majorDistricts: ['Medak', 'Ranga Reddy', 'Siddipet', 'Nalgonda', 'Khammam'],
+    season: 'Summer & Kharif',
+    soilType: 'Sandy Loam to Clay Loam Soils',
+    durationDays: '90 - 100 Days',
+    avgYieldPerAcre: '45 - 65 Quintals',
+    mandiPriceRange: '₹2,200 - ₹4,800 / Qtl',
+    giTagOrSpecialty: 'High-frequency daily cash earnings vegetable',
+    waterRequirement: 'Medium',
+    description: 'Popular fast-yielding vegetable giving daily morning harvest baskets. High dietary mucilage and fiber content.',
+    keyBenefits: ['Daily morning cash sales', 'Starts fruiting in 45 days', 'Export potential to Gulf markets'],
+    procurementHub: 'All Rythu Bazaars & Wholesale Yards'
+  },
+  {
+    id: 'drumstick-moringa',
+    name: 'Drumstick / Moringa',
+    teluguName: 'మునగకాయ (పికెఎమ్ 1 / భగ్య)',
+    category: 'Vegetables',
+    icon: '🥢',
+    popularVarieties: ['PKM 1', 'PKM 2', 'Bhagya (KDM 01)', 'ODC 3'],
+    majorDistricts: ['Mahabubnagar', 'Wanaparthy', 'Nalgonda', 'Siddipet'],
+    season: 'Perennial (Two Peak Flushes/Year)',
+    soilType: 'Sandy Loam with organic manure',
+    durationDays: 'Perennial Tree / Annual Moringa',
+    avgYieldPerAcre: '150 - 220 Quintals (Pods)',
+    mandiPriceRange: '₹3,000 - ₹9,000 / Qtl (Seasonal Spike)',
+    giTagOrSpecialty: 'Both pods and dried leaves exported as global superfood',
+    waterRequirement: 'Low',
+    description: 'High-demand vegetable tree yielding hundreds of pods per tree. Leaves are dried and processed for export nutraceutical powder.',
+    keyBenefits: ['High price during festival seasons (₹100+/kg)', 'Low water requirement', 'Dual income from pods and moringa leaf powder'],
+    procurementHub: 'Hyderabad & Nalgonda Vegetable Markets'
+  },
+  {
+    id: 'gourds-bitter-bottle-ridge',
+    name: 'Gourds (Bottle, Ridge, Bitter, Ivy Gourd)',
+    teluguName: 'సొరకాయ, బీరకాయ, కాకరకాయ, దొండకాయ',
+    category: 'Vegetables',
+    icon: '🥒',
+    popularVarieties: ['Pusa Naveen (Bottle)', 'Jaipuri Long (Ridge)', 'Chaman (Bitter)', 'Local Donda'],
+    majorDistricts: ['Ranga Reddy', 'Medchal', 'Sangareddy', 'Warangal'],
+    season: 'Both Seasons (Trellis / Pandal)',
+    soilType: 'Well-drained Sandy Loam on Pandal systems',
+    durationDays: '100 - 130 Days',
+    avgYieldPerAcre: '80 - 140 Quintals',
+    mandiPriceRange: '₹2,000 - ₹4,500 / Qtl',
+    giTagOrSpecialty: 'Pandal trellis system maximizes clean fruit quality and high yield',
+    waterRequirement: 'Medium',
+    description: 'Creeper vegetables grown on modern concrete-wire pandals across peri-urban Telangana. Produces clean, straight, premium exportable gourds.',
+    keyBenefits: ['Pandal system doubles harvest yield', 'Frequent harvesting twice a week', 'High domestic nutritional value'],
+    procurementHub: 'Bowenpally & Shamshabad Mandi'
+  },
+
+  // ==========================================
+  // 7. LEAFY GREENS (ఆకుకూరలు)
+  // ==========================================
+  {
     id: 'gongura-leafy-king',
     name: 'Gongura / Roselle (Queen of Telangana Greens)',
     teluguName: 'గోంగూర (పుల్ల గోంగూర / ఎర్ర గోంగూర)',
-    category: 'Vegetables',
-    icon: '🥬',
+    category: 'Leafy Greens',
+    icon: '🍃',
     popularVarieties: ['Erra Gongura (Red Stem)', 'Tella Gongura (Green Stem)', 'Ambada'],
     majorDistricts: ['Warangal', 'Nalgonda', 'Khammam', 'Karimnagar', 'All 33 Districts'],
     season: 'Year-round',
@@ -448,6 +806,29 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     keyBenefits: ['Fast 45-day cut-and-grow cycle', 'Zero chemical pesticide requirement', 'Year-round cultural demand'],
     procurementHub: 'All APMC Local Rythu Bazaars'
   },
+  {
+    id: 'thotakura-palakura-methi',
+    name: 'Traditional Greens (Thotakura, Palakura, Menthi)',
+    teluguName: 'తోటకూర, పాలకూర, మెంతికూర, బచ్చలికూర',
+    category: 'Leafy Greens',
+    icon: '🥬',
+    popularVarieties: ['Arka Suguna (Thotakura)', 'All Green (Palakura)', 'Pusa Early (Methi)'],
+    majorDistricts: ['Ranga Reddy', 'Medchal-Malkajgiri', 'Sangareddy', 'Yadadri'],
+    season: 'Year-round (Fast Turnaround)',
+    soilType: 'Light Loamy & Organic Garden Soil',
+    durationDays: '25 - 35 Days',
+    avgYieldPerAcre: '40 - 60 Quintals',
+    mandiPriceRange: '₹3,000 - ₹6,000 / Qtl',
+    giTagOrSpecialty: 'Fastest 30-day crop rotation providing weekly cash flow to peri-urban farmers',
+    waterRequirement: 'Medium (Sprinkler)',
+    description: 'Grown in high-frequency rotations around Telangana cities. Harvested in early morning and delivered fresh to city rythu bazaars before 6 AM.',
+    keyBenefits: ['Fastest 28-day crop cycle', '10-12 harvests per year on same land', 'Immediate morning cash realization'],
+    procurementHub: 'Hyderabad & District Rythu Bazaars'
+  },
+
+  // ==========================================
+  // 8. SPICES & CONDIMENTS (సుగంధ ద్రవ్యాలు)
+  // ==========================================
   {
     id: 'ginger-zaheerabad',
     name: 'Ginger (Zaheerabad Special)',
@@ -466,5 +847,104 @@ export const TELANGANA_CROPS_DATA: TelanganaCrop[] = [
     description: 'Zaheerabad region is Telangana’s premier ginger hub. Produces thick, aromatic rhizomes with high oleoresin content for culinary and ayurvedic uses.',
     keyBenefits: ['High profit cash crop', 'Intercropping friendly under shade', 'Extensive cold storage liquidity'],
     procurementHub: 'Zaheerabad Commercial Market Yard'
+  },
+  {
+    id: 'coriander-seeds-dhaniyalu',
+    name: 'Coriander Seeds / Dhaniyalu',
+    teluguName: 'ధనియాలు (కొత్తిమీర గింజలు)',
+    category: 'Spices & Condiments',
+    icon: '🌿',
+    popularVarieties: ['Sadhana', 'Swathi', 'Suguna', 'CS 6'],
+    majorDistricts: ['Adilabad', 'Nizamabad', 'Medak', 'Kamareddy'],
+    season: 'Rabi (యాసంగి)',
+    soilType: 'Black & Heavy Loamy Soils holding moisture',
+    durationDays: '85 - 105 Days',
+    avgYieldPerAcre: '6 - 10 Quintals (Dry Seeds)',
+    mandiPriceRange: '₹7,200 - ₹10,500 / Qtl',
+    giTagOrSpecialty: 'Essential spice base for Indian curry powders and masalas',
+    waterRequirement: 'Low',
+    description: 'Winter spice crop grown for both fresh fragrant green leaves and golden dry coriander seeds (Dhaniyalu). Essential staple across spice mills.',
+    keyBenefits: ['Dual utility (leaves + seeds)', 'Low input cost', 'High seed storage value'],
+    procurementHub: 'Nizamabad & Adilabad Spice Markets'
+  },
+  {
+    id: 'curry-leaves-karivepaku',
+    name: 'Curry Leaves (Commercial Export)',
+    teluguName: 'కరివేపాకు',
+    category: 'Spices & Condiments',
+    icon: '🌿',
+    popularVarieties: ['DWD 1', 'DWD 2', 'Senkambu Local'],
+    majorDistricts: ['Ranga Reddy', 'Medchal', 'Sangareddy', 'Nalgonda'],
+    season: 'Perennial (Harvest every 70-80 Days)',
+    soilType: 'Red Loamy Soils with good drainage',
+    durationDays: 'Perennial Bush (Continuous Harvest for 10+ Years)',
+    avgYieldPerAcre: '8 - 12 Tons/Year',
+    mandiPriceRange: '₹30,000 - ₹70,000 / Ton (₹30-70/kg)',
+    giTagOrSpecialty: 'Air-shipped daily from Rajiv Gandhi International Airport (RGIA) to Middle East & UK',
+    waterRequirement: 'Low to Medium',
+    description: 'Telangana’s peri-urban farmers export fresh aromatic curry leaves daily by air to the UAE, Saudi Arabia, and Europe.',
+    keyBenefits: ['Direct daily air-cargo export trade', 'Zero pest vulnerability', 'Harvested 4-5 times per year for a decade'],
+    procurementHub: 'Shamshabad Air Cargo & Gaddi Annaram Market'
+  },
+
+  // ==========================================
+  // 9. MEDICINAL & AGROFORESTRY (ఔషధ & వృక్ష సంపద)
+  // ==========================================
+  {
+    id: 'sandalwood-shrigandham',
+    name: 'Sandalwood & Red Sanders',
+    teluguName: 'శ్రీగంధం & ఎర్రచందనం',
+    category: 'Medicinal & Agroforestry',
+    icon: '🪵',
+    popularVarieties: ['Santalum album (White Sandalwood)', 'Pterocarpus santalinus (Red Sanders)'],
+    majorDistricts: ['Siddipet', 'Sangareddy', 'Medak', 'Nalgonda', 'Mahabubnagar'],
+    season: 'Perennial Agroforestry (12-15 Years)',
+    soilType: 'Well-drained Red Gravelly & Rocky Soils',
+    durationDays: '12 - 15 Years Maturity',
+    avgYieldPerAcre: '15 - 20 kg Heartwood / Tree',
+    mandiPriceRange: '₹6,000 - ₹14,000 / kg Heartwood',
+    giTagOrSpecialty: 'Highest legal valuable timber permitted for private cultivation with forest transit pass',
+    waterRequirement: 'Low',
+    description: 'Telangana’s state policies permit private sandalwood farming with primary host plants (Casuarina, Melia Dubia). Generates generational wealth per acre.',
+    keyBenefits: ['Generational wealth creation (Crores per acre)', 'Low ongoing water requirement', 'Intercrop income from pomegranate/guava in initial years'],
+    procurementHub: 'TSFDC Telangana Forest Development Corp'
+  },
+  {
+    id: 'ashwagandha-pennerugadda',
+    name: 'Ashwagandha / Indian Ginseng',
+    teluguName: 'అశ్వగంధ (పెన్నేరుగడ్డ)',
+    category: 'Medicinal & Agroforestry',
+    icon: '🪴',
+    popularVarieties: ['Jawahar Asgandh 20', 'Nimithli', 'CIMAP Poshita'],
+    majorDistricts: ['Nizamabad', 'Medak', 'Mahabubnagar', 'Kamareddy'],
+    season: 'Late Kharif (Aug - Jan)',
+    soilType: 'Sandy Loam or Light Red Soil (pH 7.5 - 8.0)',
+    durationDays: '150 - 170 Days',
+    avgYieldPerAcre: '3 - 5 Quintals (Dry Roots)',
+    mandiPriceRange: '₹22,000 - ₹38,000 / Qtl',
+    giTagOrSpecialty: 'High Withanolides medicinal active for global immunity supplements',
+    waterRequirement: 'Low',
+    description: 'Prominent ayurvedic cash crop grown on dry soils. Exported worldwide as adaptogenic stress relief and vitality nutraceuticals.',
+    keyBenefits: ['Very low water requirement', 'Zero pest threat (bitter taste)', 'Assured buyback contracts with pharma companies'],
+    procurementHub: 'Hyderabad Ayurvedic & Herb Markets'
+  },
+  {
+    id: 'bamboo-timber-veduru',
+    name: 'Bamboo & Malabar Neem (Melia Dubia)',
+    teluguName: 'వెదురు & మలబార్ వేప',
+    category: 'Medicinal & Agroforestry',
+    icon: '🎋',
+    popularVarieties: ['Bambusa balcooa', 'Tulda', 'Melia Dubia'],
+    majorDistricts: ['Adilabad', 'Khammam', 'Bhadradri', 'Mulugu', 'Asifabad'],
+    season: 'Perennial Agroforestry',
+    soilType: 'Deep Loamy to Forest Soils',
+    durationDays: '4 - 6 Years Harvest Cycle',
+    avgYieldPerAcre: '30 - 45 Tons/Acre',
+    mandiPriceRange: '₹4,500 - ₹6,500 / Ton',
+    giTagOrSpecialty: 'High carbon capture & paper pulp raw material for ITC Bhadrachalam paper mills',
+    waterRequirement: 'Medium',
+    description: 'Supplies raw material to ITC Paperboards Bhadrachalam and furniture industries. High green cover and carbon credit incentive eligibility.',
+    keyBenefits: ['Direct paper mill contract farming', 'Multi-harvest regrowth without replanting', 'Zero pesticide expenditure'],
+    procurementHub: 'ITC Bhadrachalam Mill Depot'
   }
 ];

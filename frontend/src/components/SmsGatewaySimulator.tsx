@@ -12,6 +12,7 @@ import {
   Share2
 } from 'lucide-react';
 import { NotificationItem } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 interface SmsGatewaySimulatorProps {
   notifications: NotificationItem[];
@@ -24,6 +25,7 @@ export const SmsGatewaySimulator: React.FC<SmsGatewaySimulatorProps> = ({
   onSendSms,
   onRefreshLogs
 }) => {
+  const { t } = useLanguage();
   const [messages, setMessages] = useState<Array<{ sender: 'user' | 'bot'; text: string; time: string; card?: any }>>([
     {
       sender: 'bot',
@@ -88,19 +90,19 @@ export const SmsGatewaySimulator: React.FC<SmsGatewaySimulatorProps> = ({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       
-      {/* Top Header */}
-      <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      {/* Header Banner */}
+      <div className="relative overflow-hidden rounded-3xl glass-panel-emerald p-6 sm:p-8">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold mb-2 border border-emerald-500/30">
-              <Bot className="h-3.5 w-3.5" />
-              <span>Twilio SMS & Meta WhatsApp Cloud API Integration</span>
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold mb-3 border border-emerald-500/30">
+              <Globe className="h-3.5 w-3.5 text-emerald-300" />
+              <span>Offline-First Multi-channel Mandi Gateway</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
-              Two-Way Multilingual Messaging Gateway
+              {t.smsTitle}
             </h1>
             <p className="text-slate-400 text-xs sm:text-sm mt-1">
-              Enables rural farmers with basic feature phones or smartphones to book slots, receive alerts, and verify QR passes via SMS & WhatsApp.
+              {t.smsSubtitle}
             </p>
           </div>
 
@@ -112,7 +114,7 @@ export const SmsGatewaySimulator: React.FC<SmsGatewaySimulatorProps> = ({
                 appMode === 'whatsapp' ? 'bg-emerald-600 text-white shadow-md glow-emerald' : 'text-slate-400 hover:text-white'
               }`}
             >
-              WhatsApp Bot
+              {t.smsTabWhatsapp}
             </button>
             <button
               onClick={() => setAppMode('sms')}
@@ -120,7 +122,7 @@ export const SmsGatewaySimulator: React.FC<SmsGatewaySimulatorProps> = ({
                 appMode === 'sms' ? 'bg-emerald-600 text-white shadow-md glow-emerald' : 'text-slate-400 hover:text-white'
               }`}
             >
-              Feature Phone SMS
+              {t.smsTabFeaturePhone}
             </button>
           </div>
         </div>

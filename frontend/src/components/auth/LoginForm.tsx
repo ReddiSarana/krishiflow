@@ -7,8 +7,10 @@ import { Checkbox } from '../ui/Checkbox';
 import { SocialAuthButtons } from './SocialAuthButtons';
 import { Mail, Lock, Phone, Fingerprint, ArrowRight, Sprout } from 'lucide-react';
 import { LoginMethod } from '../../types/auth';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const LoginForm: React.FC = () => {
+  const { t } = useLanguage();
   const { setUser, setCurrentScreen, setIsBiometricModalOpen, setOtpTarget, showToast } = useAuth();
   
   const [method, setMethod] = useState<LoginMethod>('phone');
@@ -81,10 +83,10 @@ export const LoginForm: React.FC = () => {
       </div>
 
       <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-        Sign in to KrishiFlow
+        {t.authSignInTitle}
       </h2>
       <p className="text-slate-400 text-xs sm:text-sm mt-1.5 mb-5">
-        Access real-time mandi prices, queue tracking, and your farm dispatch passes.
+        {t.authSignInSubtitle}
       </p>
 
       <div className="flex p-1 bg-slate-800/80 rounded-xl border border-slate-700/60 mb-5">
@@ -97,7 +99,7 @@ export const LoginForm: React.FC = () => {
               : 'text-slate-400 hover:text-slate-200'
           }`}
         >
-          📱 Mobile Number (OTP)
+          {t.authMobileOtpTab}
         </button>
         <button
           type="button"
@@ -108,7 +110,7 @@ export const LoginForm: React.FC = () => {
               : 'text-slate-400 hover:text-slate-200'
           }`}
         >
-          ✉️ Kisan ID / Email
+          {t.authEmailTab}
         </button>
       </div>
 

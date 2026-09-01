@@ -72,6 +72,60 @@ export interface Translations {
   farmerKisanSignInBtn: string;
   farmerActiveHub: string;
 
+  // Hub Command Center
+  hubTitle: string;
+  hubSubtitle: string;
+  hubTotalVolume: string;
+  hubCompletedLoads: string;
+  hubVehiclesInYard: string;
+  hubActiveUnloading: string;
+  hubEmergencyTrigger: string;
+  hubBayBreakdown: string;
+  hubLaborShortage: string;
+  hubRainAlert: string;
+  hubRebalancingActive: string;
+  hubAssayingTitle: string;
+  hubMoisturePercent: string;
+  hubQualityGrade: string;
+  hubGrossWeight: string;
+  hubAdvanceStage: string;
+  hubStageScheduled: string;
+  hubStageGate: string;
+  hubStageWeighbridge: string;
+  hubStageAssaying: string;
+  hubStageUnloading: string;
+  hubStageCompleted: string;
+
+  // SMS & WhatsApp Bot Simulator
+  smsTitle: string;
+  smsSubtitle: string;
+  smsTabWhatsapp: string;
+  smsTabFeaturePhone: string;
+  smsBotInstructions: string;
+  smsQuickBookTomato: string;
+  smsQuickCheckStatus: string;
+  smsQuickReportDelay: string;
+  smsInputPlaceholder: string;
+  smsSendBtn: string;
+  smsLiveLogs: string;
+
+  // Arena & Simulation
+  arenaTitle: string;
+  arenaSubtitle: string;
+  arenaControlsTitle: string;
+  arenaNumFarmers: string;
+  arenaPerishableRatio: string;
+  arenaDockBays: string;
+  arenaSurgeSpike: string;
+  arenaRunBtn: string;
+  arenaRunning: string;
+  arenaAvgWaitTime: string;
+  arenaSpoilagePrevented: string;
+  arenaThroughputGain: string;
+  arenaFuelSavings: string;
+  arenaTraditionalFifo: string;
+  arenaOrToolsOptimized: string;
+
   // Auth Portal
   authSignInTitle: string;
   authSignInSubtitle: string;
@@ -97,11 +151,17 @@ export interface Translations {
   authDeviceWeb: string;
   authDeviceTablet: string;
   authDeviceMobile: string;
+  authSignOutBtn: string;
+  authVerifiedKisan: string;
+  authActivePassToken: string;
+  authSecurityActive: string;
 }
 
 export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
+  // ==========================================
+  // ENGLISH
+  // ==========================================
   en: {
-    // Nav
     navFarmerPwa: 'Farmer PWA',
     navTelanganaCrops: '🌾 Telangana Crops',
     navHubCenter: 'Hub Command Center',
@@ -114,7 +174,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navTagline: 'Dynamic Agri-Logistics & Telangana Crops Knowledge Explorer',
     navResetDemo: 'Reset Live Demo Dataset',
 
-    // Telangana Crops
     telanganaHeaderBadge: 'Telangana State Complete Agri-Horticulture Directory',
     telanganaTitle: 'Crops, Fruits, Vegetables, Millets & Flora of Telangana',
     telanganaSubtitle: 'Explore the rich agricultural diversity across all 33 districts of Telangana. Check sowing calendars, live mandi price benchmarks, and book delivery passes.',
@@ -144,7 +203,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     telanganaPrimaryHub: 'Primary Hub',
     telanganaBookSlotFor: 'Book Delivery Slot',
 
-    // Farmer Portal
     farmerTitle: 'Farmer Procurement Booking Portal',
     farmerSubtitle: 'Dynamic AI-Scheduled Drop-off Slot & Digital Krishi-Pass',
     farmerName: 'Farmer Full Name',
@@ -170,7 +228,57 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     farmerKisanSignInBtn: 'Kisan Sign In / Register',
     farmerActiveHub: 'Active Mandi Hub',
 
-    // Auth Portal
+    hubTitle: 'Mandi Hub Operations Command Center',
+    hubSubtitle: 'Live Unloading Bays, Weighbridges, Digital Assaying Labs & AI Rebalancing',
+    hubTotalVolume: 'Total Volume Expected',
+    hubCompletedLoads: 'Completed Loads',
+    hubVehiclesInYard: 'Vehicles In Yard',
+    hubActiveUnloading: 'Active Unloading Bays',
+    hubEmergencyTrigger: 'Simulate Live Emergency Disruption',
+    hubBayBreakdown: 'Bay 2 Breakdown (Mechanical)',
+    hubLaborShortage: 'Unloading Labor Shortage (50% Delay)',
+    hubRainAlert: 'Flash Heavy Rain (Perishable Fast-track)',
+    hubRebalancingActive: 'OR-Tools Dynamic Rebalancing Active',
+    hubAssayingTitle: 'Digital Grain Quality Assaying Lab',
+    hubMoisturePercent: 'Moisture Content (%)',
+    hubQualityGrade: 'Assayed Quality Grade',
+    hubGrossWeight: 'Weighbridge Gross Weight (kg)',
+    hubAdvanceStage: 'Advance Queue Stage',
+    hubStageScheduled: 'Scheduled',
+    hubStageGate: 'Gate Entry',
+    hubStageWeighbridge: 'Weighbridge In',
+    hubStageAssaying: 'Assaying Lab',
+    hubStageUnloading: 'Unloading Dock',
+    hubStageCompleted: 'Completed & Paid',
+
+    smsTitle: 'Two-Way WhatsApp & SMS Mandi Gateway',
+    smsSubtitle: 'Simulates automated interactive booking for basic keypad featurephones and smartphones',
+    smsTabWhatsapp: 'WhatsApp Interactive Bot',
+    smsTabFeaturePhone: 'Keypad Featurephone SMS',
+    smsBotInstructions: 'Send commands: 1️⃣ BOOK <CROP> <QTY> <VILLAGE>  2️⃣ STATUS <TOKEN>  3️⃣ DELAY <MINS>',
+    smsQuickBookTomato: 'BOOK TOMATO 40 SANWER',
+    smsQuickCheckStatus: 'STATUS KRISHI-1001',
+    smsQuickReportDelay: 'DELAY 30 TRAFFIC',
+    smsInputPlaceholder: 'Type a message or click quick command above...',
+    smsSendBtn: 'Send Message',
+    smsLiveLogs: 'Telecom SMS Dispatch Logs',
+
+    arenaTitle: 'Operations Research Simulation Arena',
+    arenaSubtitle: 'Direct mathematical benchmark: Google OR-Tools Dynamic Slots vs Traditional Unmanaged Mandi Queues',
+    arenaControlsTitle: 'Simulation Parameters & Multi-Bay Constraints',
+    arenaNumFarmers: 'Simulated Farmer Inflow',
+    arenaPerishableRatio: 'Perishable Crop Proportion (%)',
+    arenaDockBays: 'Active Unloading Bays',
+    arenaSurgeSpike: 'Simulate Morning Unscheduled Surge (8:00 AM)',
+    arenaRunBtn: 'Run Real-Time OR-Tools Optimization Benchmark',
+    arenaRunning: 'Solving CP-SAT Integer Programming Matrix...',
+    arenaAvgWaitTime: 'Avg Wait Time Reduction',
+    arenaSpoilagePrevented: 'Perishable Spoilage Prevented',
+    arenaThroughputGain: 'Yard Throughput Gain',
+    arenaFuelSavings: 'Farmer Diesel Fuel Savings',
+    arenaTraditionalFifo: 'Traditional FIFO Queue (Unmanaged Mandi)',
+    arenaOrToolsOptimized: 'KrishiFlow OR-Tools Smart Schedule',
+
     authSignInTitle: 'Sign in to KrishiFlow',
     authSignInSubtitle: 'Access real-time mandi prices, queue tracking, and your farm dispatch passes.',
     authRegisterTitle: 'Create Kisan & Partner Account',
@@ -194,12 +302,17 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     authRoleBuyer: 'Trader / Buyer',
     authDeviceWeb: 'Web Desktop',
     authDeviceTablet: 'Tablet',
-    authDeviceMobile: 'Mobile Phone'
+    authDeviceMobile: 'Mobile Phone',
+    authSignOutBtn: 'Sign Out',
+    authVerifiedKisan: 'Verified Kisan Member',
+    authActivePassToken: 'Active Gate Pass',
+    authSecurityActive: '2FA + Passkey Protected'
   },
 
+  // ==========================================
   // TELUGU (తెలుగు)
+  // ==========================================
   te: {
-    // Nav
     navFarmerPwa: 'రైతు పోర్టల్ (PWA)',
     navTelanganaCrops: '🌾 తెలంగాణ పంటలు',
     navHubCenter: 'హబ్ కమాండ్ సెంటర్',
@@ -212,7 +325,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navTagline: 'తెలంగాణ సమగ్ర పంటలు మరియు డైనమిక్ వ్యవసాయ లాజిస్టిక్స్ పోర్టల్',
     navResetDemo: 'డెమో రీసెట్ చేయండి',
 
-    // Telangana Crops
     telanganaHeaderBadge: 'తెలంగాణ రాష్ట్ర సమగ్ర వ్యవసాయ & ఉద్యానవన పంటల విజ్ఞాన వేదిక',
     telanganaTitle: 'తెలంగాణ పంటలు, పండ్లు, కూరగాయలు & వృక్ష సంపద',
     telanganaSubtitle: 'తెలంగాణలోని 33 జిల్లాల్లో పండే వరి, పత్తి, తాండూరు కందులు, మిర్చి, పసుపు, మామిడి మరియు అన్ని రకాల పంటల వివరాలు, మార్కెట్ ధరలు & బుకింగ్ సౌకర్యం.',
@@ -242,7 +354,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     telanganaPrimaryHub: 'ప్రధాన మార్కెట్ హబ్',
     telanganaBookSlotFor: 'డెలివరీ స్లాట్ బుక్ చేయండి',
 
-    // Farmer Portal
     farmerTitle: 'రైతు ప్రొక్యూర్మెంట్ బుకింగ్ పోర్టల్',
     farmerSubtitle: 'ఏఐ ఆధారిత డ్రాప్-ఆఫ్ స్లాట్ & డిజిటల్ కృషి-పాస్',
     farmerName: 'రైతు పూర్తి పేరు',
@@ -268,7 +379,57 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     farmerKisanSignInBtn: 'కిసాన్ సైన్ ఇన్ / రిజిస్టర్',
     farmerActiveHub: 'ప్రస్తుత మార్కెట్ హబ్',
 
-    // Auth Portal
+    hubTitle: 'మార్కెట్ హబ్ ఆపరేషన్స్ కమాండ్ సెంటర్',
+    hubSubtitle: 'లైవ్ అన్‌లోడింగ్ బేలు, వే-బ్రిడ్జ్‌లు, డిజిటల్ క్వాలిటీ ల్యాబ్ & ఏఐ రీబ్యాలెన్సింగ్',
+    hubTotalVolume: 'మొత్తం అంచనా ప్రొక్యూర్మెంట్',
+    hubCompletedLoads: 'పూర్తయిన లోడ్లు',
+    hubVehiclesInYard: 'యార్డ్‌లోని వాహనాలు',
+    hubActiveUnloading: 'సక్రియ అన్‌లోడింగ్ బేలు',
+    hubEmergencyTrigger: 'ఎమర్జెన్సీ డిస్రప్షన్ ట్రిగ్గర్ చేయండి',
+    hubBayBreakdown: 'బే 2 మెకానికల్ బ్రేక్‌డౌన్',
+    hubLaborShortage: 'లేబర్ కొరత (50% ఆలస్యం)',
+    hubRainAlert: 'భారీ వర్షం హెచ్చరిక (పాడయ్యే పంటల ప్రాధాన్యత)',
+    hubRebalancingActive: 'OR-టూల్స్ డైనమిక్ రీబ్యాలెన్సింగ్ యాక్టివ్',
+    hubAssayingTitle: 'డిజిటల్ గ్రెయిన్ క్వాలిటీ అస్సేయింగ్ ల్యాబ్',
+    hubMoisturePercent: 'తేమ శాతం (%)',
+    hubQualityGrade: 'నిర్ధారించిన నాణ్యత గ్రేడ్',
+    hubGrossWeight: 'వే-బ్రిడ్జ్ స్థూల బరువు (కేజీలు)',
+    hubAdvanceStage: 'తర్వాతి దశకు తరలించండి',
+    hubStageScheduled: 'షెడ్యూల్ చేయబడింది',
+    hubStageGate: 'గేట్ ప్రవేశం',
+    hubStageWeighbridge: 'వే-బ్రిడ్జ్ బరువు',
+    hubStageAssaying: 'నాణ్యత పరీక్ష ల్యాబ్',
+    hubStageUnloading: 'బే అన్‌లోడింగ్',
+    hubStageCompleted: 'చెల్లింపు పూర్తయింది',
+
+    smsTitle: 'రెండు వైపులా పనిచేసే వాట్సాప్ & SMS గేట్‌వే',
+    smsSubtitle: 'ఫీచర్‌ఫోన్లు మరియు స్మార్ట్‌ఫోన్ రైతుల కోసం ఆటోమేటెడ్ ఎస్‌ఎంఎస్ బాట్ సిమ్యులేటర్',
+    smsTabWhatsapp: 'వాట్సాప్ ఇంటరాక్టివ్ బాట్',
+    smsTabFeaturePhone: 'సాధారణ మొబైల్ SMS',
+    smsBotInstructions: 'ఆదేశాలు పంపండి: 1️⃣ BOOK <పంట> <పరిమాణం> <గ్రామం>  2️⃣ STATUS <టోకెన్>  3️⃣ DELAY <నిమిషాలు>',
+    smsQuickBookTomato: 'BOOK TOMATO 40 SANWER',
+    smsQuickCheckStatus: 'STATUS KRISHI-1001',
+    smsQuickReportDelay: 'DELAY 30 TRAFFIC',
+    smsInputPlaceholder: 'సందేశం రాయండి లేదా పైనున్న బటన్ క్లిక్ చేయండి...',
+    smsSendBtn: 'సందేశం పంపండి',
+    smsLiveLogs: 'టెలికాం SMS డిస్పాచ్ లాగ్స్',
+
+    arenaTitle: 'ఆపరేషన్స్ రీసెర్చ్ సిమ్యులేషన్ అరేనా',
+    arenaSubtitle: 'గూగుల్ OR-టూల్స్ డైనమిక్ స్లాట్లు వర్సెస్ సాధారణ మార్కెట్ క్యూ పనితీరు పోలిక',
+    arenaControlsTitle: 'సిమ్యులేషన్ పారామితులు & పరిమితులు',
+    arenaNumFarmers: 'రైతుల సంఖ్య',
+    arenaPerishableRatio: 'పాడయ్యే పంటల శాతం (%)',
+    arenaDockBays: 'సక్రియ అన్‌లోడింగ్ బేలు',
+    arenaSurgeSpike: 'ఉదయం రద్దీ స్పైక్ సిమ్యులేషన్ (8:00 AM)',
+    arenaRunBtn: 'లైవ్ OR-టూల్స్ ఆప్టిమైజేషన్ రన్ చేయండి',
+    arenaRunning: 'CP-SAT అల్గారిథమ్ లెక్కించబడుతోంది...',
+    arenaAvgWaitTime: 'నిరీక్షణ సమయం తగ్గింపు',
+    arenaSpoilagePrevented: 'పాడవడం నివారించబడిన పంట',
+    arenaThroughputGain: 'మార్కెట్ సామర్థ్యం పెంపు',
+    arenaFuelSavings: 'రైతు డీజిల్ ఆదా',
+    arenaTraditionalFifo: 'సాంప్రదాయ క్రమరహిత క్యూ (FIFO)',
+    arenaOrToolsOptimized: 'కృషిఫ్లో OR-టూల్స్ స్మార్ట్ షెడ్యూల్',
+
     authSignInTitle: 'కృషిఫ్లో పోర్టల్‌లోకి లాగిన్ అవ్వండి',
     authSignInSubtitle: 'మార్కెట్ ధరలు, డిజిటల్ గేట్ పాస్‌లు మరియు క్యూ ట్రాకింగ్ పొందండి.',
     authRegisterTitle: 'కిసాన్ & భాగస్వామి ఖాతాను సృష్టించండి',
@@ -292,12 +453,17 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     authRoleBuyer: 'వ్యాపారి / కొనుగోలుదారు',
     authDeviceWeb: 'వెబ్ డెస్క్‌టాప్',
     authDeviceTablet: 'టాబ్లెట్',
-    authDeviceMobile: 'మొబైల్ ఫోన్'
+    authDeviceMobile: 'మొబైల్ ఫోన్',
+    authSignOutBtn: 'సైన్ అవుట్',
+    authVerifiedKisan: 'ధృవీకరించబడిన కిసాన్ సభ్యుడు',
+    authActivePassToken: 'సక్రియ గేట్ పాస్ టోకెన్',
+    authSecurityActive: '2FA + పాస్‌కీ భద్రత సక్రియం'
   },
 
+  // ==========================================
   // HINDI (हिन्दी)
+  // ==========================================
   hi: {
-    // Nav
     navFarmerPwa: 'किसान पोर्टल (PWA)',
     navTelanganaCrops: '🌾 तेलंगाना फसलें',
     navHubCenter: 'मंडी कमांड सेंटर',
@@ -310,7 +476,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navTagline: 'तेलंगाना कृषि निर्देशिका एवं गतिशील कृषि-लॉजिस्टिक्स प्रणाली',
     navResetDemo: 'डेमो डेटा रीसेट करें',
 
-    // Telangana Crops
     telanganaHeaderBadge: 'तेलंगाना राज्य संपूर्ण कृषि एवं बागवानी निर्देशिका',
     telanganaTitle: 'तेलंगाना की प्रमुख फसलें, फल, सब्जियां और वनस्पति',
     telanganaSubtitle: 'तेलंगाना के सभी 33 जिलों में उगाई जाने वाली धान, कपास, तांडूर अरहर, हल्दी, मिर्च और आम की संपूर्ण जानकारी, बुवाई कैलेंडर व मंडी भाव।',
@@ -340,7 +505,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     telanganaPrimaryHub: 'प्रमुख खरीद केंद्र',
     telanganaBookSlotFor: 'डिलीवरी स्लॉट बुक करें',
 
-    // Farmer Portal
     farmerTitle: 'किसान उपज स्लॉट बुकिंग पोर्टल',
     farmerSubtitle: 'एआई-संचालित सटीक समय स्लॉट एवं डिजिटल कृषि-पास',
     farmerName: 'किसान का पूरा नाम',
@@ -366,7 +530,57 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     farmerKisanSignInBtn: 'किसान साइन इन / रजिस्टर',
     farmerActiveHub: 'सक्रिय मंडी हब',
 
-    // Auth Portal
+    hubTitle: 'मंडी परिचालन कमांड सेंटर',
+    hubSubtitle: 'लाइव अनलोडिंग बे, वे-ब्रिज, डिजिटल प्रयोगशाला एवं एआई शेड्यूलिंग',
+    hubTotalVolume: 'कुल अनुमानित आवक (टन)',
+    hubCompletedLoads: 'पूर्ण अनलोडिंग',
+    hubVehiclesInYard: 'परिसर में वाहन',
+    hubActiveUnloading: 'सक्रिय अनलोडिंग बे',
+    hubEmergencyTrigger: 'आपातकालीन व्यवधान सिमुलेट करें',
+    hubBayBreakdown: 'बे 2 खराबी (यांत्रिक)',
+    hubLaborShortage: 'मजदूरों की कमी (50% देरी)',
+    hubRainAlert: 'भारी बारिश अलर्ट (जल्द खराब होने वाली फसलें प्राथमिकता)',
+    hubRebalancingActive: 'OR-टूल्स रीबैलेंसिंग सक्रिय',
+    hubAssayingTitle: 'डिजिटल गुणवत्ता परख प्रयोगशाला',
+    hubMoisturePercent: 'नमी की मात्रा (%)',
+    hubQualityGrade: 'प्रमाणित गुणवत्ता ग्रेड',
+    hubGrossWeight: 'वे-ब्रिज सकल वजन (किग्रा)',
+    hubAdvanceStage: 'अगले चरण में भेजें',
+    hubStageScheduled: 'शेड्यूल किया गया',
+    hubStageGate: 'गेट आगमन',
+    hubStageWeighbridge: 'वे-ब्रिज इन',
+    hubStageAssaying: 'गुणवत्ता जांच',
+    hubStageUnloading: 'बे अनलोडिंग',
+    hubStageCompleted: 'भुगतान पूर्ण',
+
+    smsTitle: 'व्हाट्सएप एवं SMS स्वचालित मंडी गेटवे',
+    smsSubtitle: 'कीपैड फोन और स्मार्टफोन दोनों के लिए स्वचालित 2-तरफा बॉट',
+    smsTabWhatsapp: 'व्हाट्सएप चैटबॉट',
+    smsTabFeaturePhone: 'साधारण फोन SMS',
+    smsBotInstructions: 'कमांड भेजें: 1️⃣ BOOK <फसल> <मात्रा> <गांव>  2️⃣ STATUS <टोकन>  3️⃣ DELAY <मिनट>',
+    smsQuickBookTomato: 'BOOK TOMATO 40 SANWER',
+    smsQuickCheckStatus: 'STATUS KRISHI-1001',
+    smsQuickReportDelay: 'DELAY 30 TRAFFIC',
+    smsInputPlaceholder: 'संदेश लिखें या ऊपर दिया बटन दबाएं...',
+    smsSendBtn: 'संदेश भेजें',
+    smsLiveLogs: 'टेलीकॉम SMS डिस्पैच लॉग',
+
+    arenaTitle: 'ऑपरेशन्स रिसर्च सिमुलेशन एरीना',
+    arenaSubtitle: 'गूगल OR-टूल्स बनाम पारंपरिक अनियंत्रित मंडी कतार प्रदर्शन तुलना',
+    arenaControlsTitle: 'सिमुलेशन पैरामीटर व बाधाएं',
+    arenaNumFarmers: 'सिमुलेटेड किसान संख्या',
+    arenaPerishableRatio: 'खराब होने वाली फसलों का अनुपात (%)',
+    arenaDockBays: 'सक्रिय अनलोडिंग बे',
+    arenaSurgeSpike: 'सुबह की भीड़ स्पाइक सिमुलेट करें (8:00 AM)',
+    arenaRunBtn: 'OR-टूल्स लाइव सिमुलेशन चलाएं',
+    arenaRunning: 'CP-SAT गणितीय मैट्रिक्स हल हो रहा है...',
+    arenaAvgWaitTime: 'प्रतीक्षा समय में कमी',
+    arenaSpoilagePrevented: 'बचाई गई उपज',
+    arenaThroughputGain: 'मंडी कार्यक्षमता वृद्धि',
+    arenaFuelSavings: 'किसान डीजल बचत',
+    arenaTraditionalFifo: 'पारंपरिक अनियंत्रित कतार (FIFO)',
+    arenaOrToolsOptimized: 'कृषि-फ्लो OR-टूल्स स्मार्ट शेड्यूलिंग',
+
     authSignInTitle: 'कृषि-फ्लो में साइन इन करें',
     authSignInSubtitle: 'मंडी भाव, डिजिटल गेट पास और स्लॉट ट्रैकिंग तक सीधी पहुंच।',
     authRegisterTitle: 'किसान एवं पार्टनर खाता बनाएं',
@@ -390,12 +604,17 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     authRoleBuyer: 'व्यापारी / खरीदार',
     authDeviceWeb: 'वेब डेस्कटॉप',
     authDeviceTablet: 'टैबलेट',
-    authDeviceMobile: 'मोबाइल फोन'
+    authDeviceMobile: 'मोबाइल फोन',
+    authSignOutBtn: 'साइन आउट',
+    authVerifiedKisan: 'सत्यापित किसान सदस्य',
+    authActivePassToken: 'सक्रिय गेट पास',
+    authSecurityActive: '2FA + पासकी सुरक्षा सक्रिय'
   },
 
+  // ==========================================
   // MARATHI (मराठी)
+  // ==========================================
   mr: {
-    // Nav
     navFarmerPwa: 'शेतकरी पोर्टल (PWA)',
     navTelanganaCrops: '🌾 तेलंगणा पिके',
     navHubCenter: 'खरेदी केंद्र नियंत्रण',
@@ -408,7 +627,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navTagline: 'तेलंगणा पिके निर्देशिका आणि कृषी लॉजिस्टिक्स प्लॅटफॉर्म',
     navResetDemo: 'डेमो डेटा पूर्ववत करा',
 
-    // Telangana Crops
     telanganaHeaderBadge: 'तेलंगणा राज्य सर्वसमावेशक कृषी व फलोत्पादन निर्देशिका',
     telanganaTitle: 'तेलंगणातील प्रमुख पिके, फळे, भाज्या आणि वनस्पती',
     telanganaSubtitle: 'तेलंगणातील ३३ जिल्ह्यांमधील तांदूळ, कापूस, तूर, हळद, मिरची आणि आंब्याची सविस्तर माहिती व बाजारभाव.',
@@ -438,7 +656,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     telanganaPrimaryHub: 'प्रमुख खरेदी केंद्र',
     telanganaBookSlotFor: 'डिलिव्हरी स्लॉट बुक करा',
 
-    // Farmer Portal
     farmerTitle: 'शेतकरी खरेदी स्लॉट बुकिंग पोर्टल',
     farmerSubtitle: 'एआय-आधारित अचूक वेळ स्लॉट आणि डिजिटल कृषी-पास',
     farmerName: 'शेतकऱ्याचे पूर्ण नाव',
@@ -464,7 +681,57 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     farmerKisanSignInBtn: 'किसान लॉगिन / नोंदणी',
     farmerActiveHub: 'सक्रिय खरेदी केंद्र',
 
-    // Auth Portal
+    hubTitle: 'मार्केट यार्ड नियंत्रण केंद्र',
+    hubSubtitle: 'अनलोडिंग बे, वजन काटा, लॅब चाचणी आणि एआय शेड्यूलिंग',
+    hubTotalVolume: 'एकूण आवक अंदाज (टन)',
+    hubCompletedLoads: 'पूर्ण झालेली वाहने',
+    hubVehiclesInYard: 'यार्डमधील वाहने',
+    hubActiveUnloading: 'सक्रिय अनलोडिंग बे',
+    hubEmergencyTrigger: 'आपत्कालीन अडथळा निर्माण करा',
+    hubBayBreakdown: 'बे २ यांत्रिक बिघाड',
+    hubLaborShortage: 'मजुरांची कमतरता',
+    hubRainAlert: 'मुसळधार पाऊस इशारा',
+    hubRebalancingActive: 'OR-टूल्स शेड्यूलिंग चालू',
+    hubAssayingTitle: 'डिजिटल धान्य गुणवत्ता चाचणी प्रयोगशाळा',
+    hubMoisturePercent: 'ओलावा प्रमाण (%)',
+    hubQualityGrade: 'प्रमाणित गुणवत्ता ग्रेड',
+    hubGrossWeight: 'वजन काटा एकूण वजन (किग्रॅ)',
+    hubAdvanceStage: 'पुढील टप्प्यावर पाठवा',
+    hubStageScheduled: 'शेड्यूल',
+    hubStageGate: 'गेट आगमन',
+    hubStageWeighbridge: 'वजन काटा',
+    hubStageAssaying: 'गुणवत्ता चाचणी',
+    hubStageUnloading: 'अनलोडिंग',
+    hubStageCompleted: 'पेमेंट पूर्ण',
+
+    smsTitle: 'व्हॉट्सॲप आणि SMS स्वयंचलित मार्केट गेटवे',
+    smsSubtitle: 'साध्या फोन आणि स्मार्टफोनसाठी स्वयंचलित २-मार्गी बॉट',
+    smsTabWhatsapp: 'व्हॉट्सॲप बॉट',
+    smsTabFeaturePhone: 'साधा फोन SMS',
+    smsBotInstructions: 'कमांड पाठवा: 1️⃣ BOOK <पीक> <प्रमाण> <गाव>  2️⃣ STATUS <टोकन>  3️⃣ DELAY <वेळ>',
+    smsQuickBookTomato: 'BOOK TOMATO 40 SANWER',
+    smsQuickCheckStatus: 'STATUS KRISHI-1001',
+    smsQuickReportDelay: 'DELAY 30 TRAFFIC',
+    smsInputPlaceholder: 'संदेश लिहा किंवा वरील बटण दाबा...',
+    smsSendBtn: 'संदेश पाठवा',
+    smsLiveLogs: 'SMS ट्रॅकिंग लॉग',
+
+    arenaTitle: 'ऑपरेशन्स रिसर्च सिम्युलेशन दालन',
+    arenaSubtitle: 'गूगल OR-टूल्स विरूद्ध पारंपारिक अनियंत्रित रांग तुलना',
+    arenaControlsTitle: 'सिम्युलेशन नियंत्रणे',
+    arenaNumFarmers: 'शेतकरी संख्या',
+    arenaPerishableRatio: 'नाशिवंत पिके प्रमाण (%)',
+    arenaDockBays: 'सक्रिय अनलोडिंग बे',
+    arenaSurgeSpike: 'सकाळची गर्दी सिमुलेट करा',
+    arenaRunBtn: 'OR-टूल्स सिम्युलेशन सुरू करा',
+    arenaRunning: 'गणना चालू आहे...',
+    arenaAvgWaitTime: 'वेळेत बचत',
+    arenaSpoilagePrevented: 'नासाडी रोखलेली पिके',
+    arenaThroughputGain: 'कार्यक्षमता वाढ',
+    arenaFuelSavings: 'डिझेल बचत',
+    arenaTraditionalFifo: 'पारंपारिक रांग (FIFO)',
+    arenaOrToolsOptimized: 'कृषी-फ्लो OR-टूल्स स्मार्ट शेड्यूलिंग',
+
     authSignInTitle: 'कृषी-फ्लो मध्ये लॉगिन करा',
     authSignInSubtitle: 'बाजारभाव, गेट पास आणि रीअल-टाइम ट्रॅकिंगसाठी साइन इन करा.',
     authRegisterTitle: 'शेतकरी व भागीदार खाते तयार करा',
@@ -488,12 +755,17 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     authRoleBuyer: 'व्यापारी / खरेदीदार',
     authDeviceWeb: 'वेब डेस्कटॉप',
     authDeviceTablet: 'टॅबलेट',
-    authDeviceMobile: 'मोबाईल फोन'
+    authDeviceMobile: 'मोबाईल फोन',
+    authSignOutBtn: 'लॉग आउट',
+    authVerifiedKisan: 'प्रमाणित किसान सदस्य',
+    authActivePassToken: 'सक्रिय गेट पास',
+    authSecurityActive: '2FA + पासकी सुरक्षा सक्रिय'
   },
 
+  // ==========================================
   // PUNJABI (ਪੰਜਾਬੀ)
+  // ==========================================
   pa: {
-    // Nav
     navFarmerPwa: 'ਕਿਸਾਨ ਪੋਰਟਲ (PWA)',
     navTelanganaCrops: '🌾 ਤੇਲੰਗਾਨਾ ਫਸਲਾਂ',
     navHubCenter: 'ਮੰਡੀ ਕਮਾਂਡ ਸੈਂਟਰ',
@@ -506,7 +778,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navTagline: 'ਤੇਲੰਗਾਨਾ ਫਸਲਾਂ ਡਾਇਰੈਕਟਰੀ ਅਤੇ ਐਗਰੀ-ਲਾਜਿਸਟਿਕਸ ਪੋਰਟਲ',
     navResetDemo: 'ਡੈਮੋ ਰੀਸੈਟ ਕਰੋ',
 
-    // Telangana Crops
     telanganaHeaderBadge: 'ਤੇਲੰਗਾਨਾ ਰਾਜ ਸੰਪੂਰਨ ਖੇਤੀਬਾੜੀ ਅਤੇ ਬਾਗਬਾਨੀ ਡਾਇਰੈਕਟਰੀ',
     telanganaTitle: 'ਤੇਲੰਗਾਨਾ ਦੀਆਂ ਫਸਲਾਂ, ਫਲ, ਸਬਜ਼ੀਆਂ ਅਤੇ ਬਨਸਪਤੀ',
     telanganaSubtitle: 'ਤੇਲੰਗਾਨਾ ਦੇ 33 ਜ਼ਿਲ੍ਹਿਆਂ ਵਿੱਚ ਝੋਨਾ, ਨਰਮਾ, ਦਾਲਾਂ, ਹਲਦੀ, ਮਿਰਚ ਅਤੇ ਅੰਬ ਦੀ ਪੂਰੀ ਜਾਣਕਾਰੀ ਅਤੇ ਮੰਡੀ ਭਾਅ।',
@@ -536,7 +807,6 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     telanganaPrimaryHub: 'ਮੁੱਖ ਖਰੀਦ ਕੇਂਦਰ',
     telanganaBookSlotFor: 'ਡਿਲੀਵਰੀ ਸਲਾਟ ਬੁੱਕ ਕਰੋ',
 
-    // Farmer Portal
     farmerTitle: 'ਕਿਸਾਨ ਖਰੀਦ ਸਲਾਟ ਬੁਕਿੰਗ ਪੋਰਟਲ',
     farmerSubtitle: 'ਏਆਈ-ਅਧਾਰਿਤ ਸਲਾਟ ਅਤੇ ਡਿਜੀਟਲ ਕ੍ਰਿਸ਼ੀ-ਪਾਸ',
     farmerName: 'ਕਿਸਾਨ ਦਾ ਨਾਮ',
@@ -562,7 +832,57 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     farmerKisanSignInBtn: 'ਕਿਸਾਨ ਸਾਈਨ ਇਨ / ਰਜਿਸਟਰ',
     farmerActiveHub: 'ਸਰਗਰਮ ਮੰਡੀ ਕੇਂਦਰ',
 
-    // Auth Portal
+    hubTitle: 'ਮੰਡੀ ਕਮਾਂਡ ਸੈਂਟਰ',
+    hubSubtitle: 'ਲਾਈਵ ਅਨਲੋਡਿੰਗ ਬੇਅ, ਕੰਡੇ, ਲੈਬ ਟੈਸਟਿੰਗ ਅਤੇ ਏਆਈ ਸ਼ਡਿਊਲਿੰਗ',
+    hubTotalVolume: 'ਕੁੱਲ ਅੰਦਾਜ਼ਨ ਆਮਦ (ਟਨ)',
+    hubCompletedLoads: 'ਪੂਰੇ ਹੋਏ ਲੋਡ',
+    hubVehiclesInYard: 'ਯਾਰਡ ਵਿੱਚ ਵਾਹਨ',
+    hubActiveUnloading: 'ਸਰਗਰਮ ਬੇਅ',
+    hubEmergencyTrigger: 'ਐਮਰਜੈਂਸੀ ਰੁਕਾਵਟ ਬਣਾਓ',
+    hubBayBreakdown: 'ਬੇਅ 2 ਖਰਾਬੀ',
+    hubLaborShortage: 'ਲੇਬਰ ਦੀ ਘਾਟ',
+    hubRainAlert: 'ਭਾਰੀ ਮੀਂਹ ਚੇਤਾਵਨੀ',
+    hubRebalancingActive: 'OR-ਟੂਲਸ ਰੀਬੈਲੈਂਸਿੰਗ ਚਾਲੂ',
+    hubAssayingTitle: 'ਡਿਜੀਟਲ ਗੁਣਵੱਤਾ ਲੈਬ',
+    hubMoisturePercent: 'ਨਮੀ ਦੀ ਮਾਤਰਾ (%)',
+    hubQualityGrade: 'ਗੁਣਵੱਤਾ ਗ੍ਰੇਡ',
+    hubGrossWeight: 'ਕੰਡਾ ਕੁੱਲ ਵਜ਼ਨ (ਕਿਲੋ)',
+    hubAdvanceStage: 'ਅਗਲੇ ਪੜਾਅ ਤੇ ਭੇਜੋ',
+    hubStageScheduled: 'ਸ਼ਡਿਊਲ',
+    hubStageGate: 'ਗੇਟ ਐਂਟਰੀ',
+    hubStageWeighbridge: 'ਕੰਡਾ (ਵਜ਼ਨ)',
+    hubStageAssaying: 'ਗੁਣਵੱਤਾ ਜਾਂਚ',
+    hubStageUnloading: 'ਅਨਲੋਡਿੰਗ',
+    hubStageCompleted: 'ਭੁਗਤਾਨ ਪੂਰਾ',
+
+    smsTitle: 'ਵਟਸਐਪ ਅਤੇ SMS ਆਟੋਮੇਟਿਡ ਮੰਡੀ ਗੇਟਵੇ',
+    smsSubtitle: 'ਕੀਪੈਡ ਫੋਨਾਂ ਅਤੇ ਸਮਾਰਟਫੋਨਾਂ ਦੋਵਾਂ ਲਈ 2-ਤਰਫਾ ਬੋਟ',
+    smsTabWhatsapp: 'ਵਟਸਐਪ ਬੋਟ',
+    smsTabFeaturePhone: 'ਸਾਧਾਰਨ ਫੋਨ SMS',
+    smsBotInstructions: 'ਕਮਾਂਡ ਭੇਜੋ: 1️⃣ BOOK <ਫਸਲ> <ਮਾਤਰਾ> <ਪਿੰਡ>  2️⃣ STATUS <ਟੋਕਨ>  3️⃣ DELAY <ਮਿੰਟ>',
+    smsQuickBookTomato: 'BOOK TOMATO 40 SANWER',
+    smsQuickCheckStatus: 'STATUS KRISHI-1001',
+    smsQuickReportDelay: 'DELAY 30 TRAFFIC',
+    smsInputPlaceholder: 'ਸੁਨੇਹਾ ਲਿਖੋ ਜਾਂ ਉੱਪਰ ਵਾਲਾ ਬਟਨ ਦਬਾਓ...',
+    smsSendBtn: 'ਸੁਨੇਹਾ ਭੇਜੋ',
+    smsLiveLogs: 'SMS ਡਿਸਪੈਚ ਲੌਗ',
+
+    arenaTitle: 'ਆਪਰੇਸ਼ਨ ਰਿਸਰਚ ਸਿਮੂਲੇਸ਼ਨ ਅਰੀਨਾ',
+    arenaSubtitle: 'ਗੂਗਲ OR-ਟੂਲਸ ਬਨਾਮ ਆਮ ਮੰਡੀ ਕਤਾਰ ਤੁਲਨਾ',
+    arenaControlsTitle: 'ਸਿਮੂਲੇਸ਼ਨ ਪੈਰਾਮੀਟਰ',
+    arenaNumFarmers: 'ਕਿਸਾਨਾਂ ਦੀ ਗਿਣਤੀ',
+    arenaPerishableRatio: 'ਖਰਾਬ ਹੋਣ ਵਾਲੀਆਂ ਫਸਲਾਂ (%)',
+    arenaDockBays: 'ਸਰਗਰਮ ਅਨਲੋਡਿੰਗ ਬੇਅ',
+    arenaSurgeSpike: 'ਸਵੇਰ ਦੀ ਭੀੜ ਸਿਮੂਲੇਟ ਕਰੋ',
+    arenaRunBtn: 'OR-ਟੂਲਸ ਲਾਈਵ ਸਿਮੂਲੇਸ਼ਨ ਚਲਾਓ',
+    arenaRunning: 'ਹਿਸਾਬ ਲਗਾਇਆ ਜਾ ਰਿਹਾ ਹੈ...',
+    arenaAvgWaitTime: 'ਉਡੀਕ ਸਮੇਂ ਵਿੱਚ ਕਮੀ',
+    arenaSpoilagePrevented: 'ਬਚਾਈ ਗਈ ਫਸਲ',
+    arenaThroughputGain: 'ਮੰਡੀ ਸਮਰੱਥਾ ਵਾਧਾ',
+    arenaFuelSavings: 'ਡੀਜ਼ਲ ਬਚਤ',
+    arenaTraditionalFifo: 'ਰਵਾਇਤੀ ਕਤਾਰ (FIFO)',
+    arenaOrToolsOptimized: 'ਕ੍ਰਿਸ਼ੀ-ਫਲੋ OR-ਟੂਲਸ ਸਮਾਰਟ ਸ਼ਡਿਊਲ',
+
     authSignInTitle: 'ਕ੍ਰਿਸ਼ੀ-ਫਲੋ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ',
     authSignInSubtitle: 'ਮੰਡੀ ਭਾਅ ਅਤੇ ਡਿਜੀਟਲ ਗੇਟ ਪਾਸ ਪ੍ਰਾਪਤ ਕਰੋ।',
     authRegisterTitle: 'ਕਿਸਾਨ ਖਾਤਾ ਬਣਾਓ',
@@ -586,7 +906,11 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     authRoleBuyer: 'ਵਪਾਰੀ / ਖਰੀਦਦਾਰ',
     authDeviceWeb: 'ਵੈੱਬ ਡੈਸਕਟਾਪ',
     authDeviceTablet: 'ਟੈਬਲੇਟ',
-    authDeviceMobile: 'ਮੋਬਾਈਲ ਫ਼ੋਨ'
+    authDeviceMobile: 'ਮੋਬਾਈਲ ਫ਼ੋਨ',
+    authSignOutBtn: 'ਸਾਈਨ ਆਉਟ',
+    authVerifiedKisan: 'ਪ੍ਰਮਾਣਿਤ ਕਿਸਾਨ ਮੈਂਬਰ',
+    authActivePassToken: 'ਸਰਗਰਮ ਗੇਟ ਪਾਸ',
+    authSecurityActive: '2FA + ਪਾਸਕੀ ਸੁਰੱਖਿਆ ਚਾਲੂ'
   }
 };
 

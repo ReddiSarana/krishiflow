@@ -30,6 +30,7 @@ import {
   Layers
 } from 'lucide-react';
 import { SimulationResult } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 interface SimulationArenaProps {
   simulationResult: SimulationResult;
@@ -40,6 +41,7 @@ export const SimulationArena: React.FC<SimulationArenaProps> = ({
   simulationResult,
   onRunSimulation
 }) => {
+  const { t } = useLanguage();
   const [numFarmers, setNumFarmers] = useState<number>(60);
   const [perishableRatio, setPerishableRatio] = useState<number>(0.4);
   const [dockCount, setDockCount] = useState<number>(6);
@@ -80,13 +82,13 @@ export const SimulationArena: React.FC<SimulationArenaProps> = ({
           <div>
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-3 border border-amber-500/30">
               <Award className="h-3.5 w-3.5 text-amber-300" />
-              <span>CSBS Operations Research & Business Impact Pitch</span>
+              <span>OR-Tools Operations Research Engine</span>
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Simulation & ROI Benchmark Arena
+              {t.arenaTitle}
             </h1>
             <p className="text-amber-100/80 text-xs sm:text-sm mt-2 max-w-2xl">
-              Compare Uncoordinated First-Come-First-Serve (FCFS) Chaos vs KrishiFlow Google OR-Tools Multi-Dock Optimization.
+              {t.arenaSubtitle}
             </p>
           </div>
 
@@ -106,7 +108,7 @@ export const SimulationArena: React.FC<SimulationArenaProps> = ({
         <div className="flex items-center justify-between pb-4 border-b border-slate-800">
           <div className="flex items-center space-x-2">
             <Sliders className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-lg font-bold text-white">What-If Scenario Parameters</h2>
+            <h2 className="text-lg font-bold text-white">{t.arenaControlsTitle}</h2>
           </div>
           <button
             onClick={handleSimulate}
@@ -116,12 +118,12 @@ export const SimulationArena: React.FC<SimulationArenaProps> = ({
             {isRunning ? (
               <>
                 <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
-                <span>Solving CP-SAT Model...</span>
+                <span>{t.arenaRunning}</span>
               </>
             ) : (
               <>
                 <Play className="h-4 w-4 fill-current" />
-                <span>Run Operations Research Benchmark</span>
+                <span>{t.arenaRunBtn}</span>
               </>
             )}
           </button>

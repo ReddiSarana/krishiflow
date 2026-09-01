@@ -18,6 +18,7 @@ import {
   Check
 } from 'lucide-react';
 import { DigitalPass, ProcurementHub, QueueStage } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 interface HubCommandCenterProps {
   hub: ProcurementHub;
@@ -34,6 +35,7 @@ export const HubCommandCenter: React.FC<HubCommandCenterProps> = ({
   onTriggerDisruption,
   onRefresh
 }) => {
+  const { t } = useLanguage();
   const [selectedPassForAssaying, setSelectedPassForAssaying] = useState<DigitalPass | null>(null);
   const [moistureInput, setMoistureInput] = useState<number>(12.4);
   const [gradeInput, setGradeInput] = useState<string>('Grade A (Export Quality)');
@@ -125,14 +127,14 @@ export const HubCommandCenter: React.FC<HubCommandCenterProps> = ({
             <div className="flex items-center space-x-2">
               <Warehouse className="h-5 w-5 text-emerald-400" />
               <span className="text-xs uppercase font-extrabold tracking-wider text-emerald-400">
-                Procurement Hub Command Center
+                {t.hubTitle}
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
               {hub.name}
             </h1>
             <p className="text-slate-400 text-xs sm:text-sm mt-1">
-              {hub.location} &bull; Operating Hours: 06:00 AM - 08:00 PM &bull; Capacity: {hub.daily_capacity_tons} MT/day
+              {t.hubSubtitle} &bull; Capacity: {hub.daily_capacity_tons} MT/day
             </p>
           </div>
 
@@ -144,7 +146,7 @@ export const HubCommandCenter: React.FC<HubCommandCenterProps> = ({
               className="px-4 py-2.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/40 text-rose-300 font-bold text-xs flex items-center space-x-2 transition-all shadow-md shadow-rose-950/40"
             >
               <ShieldAlert className="h-4 w-4 text-rose-400" />
-              <span>{isRebalancing ? 'Rebalancing...' : 'Simulate Bay 1 Breakdown'}</span>
+              <span>{isRebalancing ? t.hubRebalancingActive : t.hubBayBreakdown}</span>
             </button>
 
             <button
@@ -153,7 +155,7 @@ export const HubCommandCenter: React.FC<HubCommandCenterProps> = ({
               className="px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 font-bold text-xs flex items-center space-x-2 transition-all shadow-md shadow-amber-950/40"
             >
               <Zap className="h-4 w-4 text-amber-400" />
-              <span>{isRebalancing ? 'Rebalancing...' : 'Simulate Monsoon Delay (1hr)'}</span>
+              <span>{isRebalancing ? t.hubRebalancingActive : t.hubRainAlert}</span>
             </button>
 
             <button
@@ -171,7 +173,7 @@ export const HubCommandCenter: React.FC<HubCommandCenterProps> = ({
           <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
             <div className="flex items-center space-x-2 text-xs text-slate-400 mb-1">
               <Truck className="h-4 w-4 text-emerald-400" />
-              <span>Today's Total Slotted</span>
+              <span>{t.hubTotalVolume}</span>
             </div>
             <div className="text-2xl font-black text-white font-mono">
               {passes.length} <span className="text-xs text-slate-400 font-normal">trucks</span>
@@ -184,7 +186,7 @@ export const HubCommandCenter: React.FC<HubCommandCenterProps> = ({
           <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
             <div className="flex items-center space-x-2 text-xs text-slate-400 mb-1">
               <Clock className="h-4 w-4 text-amber-400" />
-              <span>Currently In Yard</span>
+              <span>{t.hubVehiclesInYard}</span>
             </div>
             <div className="text-2xl font-black text-amber-400 font-mono">
               {inYardCount} <span className="text-xs text-slate-400 font-normal">active</span>
@@ -197,26 +199,26 @@ export const HubCommandCenter: React.FC<HubCommandCenterProps> = ({
           <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
             <div className="flex items-center space-x-2 text-xs text-slate-400 mb-1">
               <Warehouse className="h-4 w-4 text-cyan-400" />
-              <span>Active Dock Unloading</span>
+              <span>{t.hubActiveUnloading}</span>
             </div>
             <div className="text-2xl font-black text-cyan-400 font-mono">
-              {activeUnloadingCount} / {hub.dock_bays.length} <span className="text-xs text-slate-400 font-normal">bays</span>
+              {activeUnloadingCount} / {hub.dock_bays.length}
             </div>
             <div className="text-[11px] text-slate-500 mt-1">
-              OR-Tools Dock Efficiency: <span className="text-cyan-400 font-semibold">94%</span>
+              High-throughput Express
             </div>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800">
             <div className="flex items-center space-x-2 text-xs text-slate-400 mb-1">
               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-              <span>Processed & DBT Paid</span>
+              <span>{t.hubCompletedLoads}</span>
             </div>
             <div className="text-2xl font-black text-emerald-400 font-mono">
-              {completedCount} <span className="text-xs text-slate-400 font-normal">completed</span>
+              {completedCount} <span className="text-xs text-slate-400 font-normal">cleared</span>
             </div>
             <div className="text-[11px] text-slate-500 mt-1">
-              100% Direct Bank Transfer
+              DBT Payout Transferred
             </div>
           </div>
         </div>

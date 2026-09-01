@@ -8,8 +8,10 @@ import { PasswordStrengthMeter } from './PasswordStrengthMeter';
 import { SocialAuthButtons } from './SocialAuthButtons';
 import { User as UserIcon, Mail, Lock, ShieldCheck, ArrowRight, Sprout, Tractor, Building2, UserCheck } from 'lucide-react';
 import { UserRole } from '../../types/auth';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const RegisterForm: React.FC = () => {
+  const { t } = useLanguage();
   const { setCurrentScreen, setOtpTarget, showToast } = useAuth();
 
   const [role, setRole] = useState<UserRole>('farmer');
@@ -90,10 +92,10 @@ export const RegisterForm: React.FC = () => {
           🌾 Join KrishiFlow Network
         </span>
         <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-          Create Kisan & Partner Account
+          {t.authRegisterTitle}
         </h2>
         <p className="text-slate-400 text-xs sm:text-sm mt-1">
-          Select your role to personalize crop advisory, mandi prices, and trading tools.
+          {t.authRegisterSubtitle}
         </p>
       </div>
 
@@ -108,7 +110,7 @@ export const RegisterForm: React.FC = () => {
           }`}
         >
           <Tractor className="w-4 h-4" />
-          <span className="text-xs font-semibold">Farmer</span>
+          <span className="text-xs font-semibold">{t.authRoleFarmer}</span>
         </button>
 
         <button
@@ -121,7 +123,7 @@ export const RegisterForm: React.FC = () => {
           }`}
         >
           <Sprout className="w-4 h-4" />
-          <span className="text-xs font-semibold">FPO / Coop</span>
+          <span className="text-xs font-semibold">{t.authRoleFpo}</span>
         </button>
 
         <button
@@ -134,7 +136,7 @@ export const RegisterForm: React.FC = () => {
           }`}
         >
           <UserCheck className="w-4 h-4" />
-          <span className="text-xs font-semibold">Agronomist</span>
+          <span className="text-xs font-semibold">{t.authRoleAgronomist}</span>
         </button>
 
         <button
@@ -147,7 +149,7 @@ export const RegisterForm: React.FC = () => {
           }`}
         >
           <Building2 className="w-4 h-4" />
-          <span className="text-xs font-semibold">Trader / Buyer</span>
+          <span className="text-xs font-semibold">{t.authRoleBuyer}</span>
         </button>
       </div>
 

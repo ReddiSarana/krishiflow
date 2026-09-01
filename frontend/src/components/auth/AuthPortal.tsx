@@ -9,8 +9,10 @@ import { WebAuthLayout } from '../layout/WebAuthLayout';
 import { MobileAuthLayout } from '../layout/MobileAuthLayout';
 import { Monitor, Tablet, Smartphone, LogOut, Award, MapPin, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/Button';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const AuthPortal: React.FC = () => {
+  const { t } = useLanguage();
   const { user, currentScreen, setCurrentScreen, deviceMode, setDeviceMode, logout, showToast } = useAuth();
 
   const handleDeviceChange = (mode: 'desktop' | 'tablet' | 'mobile') => {
@@ -81,7 +83,7 @@ export const AuthPortal: React.FC = () => {
             }`}
           >
             <Monitor className="w-3.5 h-3.5" />
-            <span>Web Desktop</span>
+            <span>{t.authDeviceWeb}</span>
           </button>
           <button
             onClick={() => handleDeviceChange('tablet')}
@@ -92,7 +94,7 @@ export const AuthPortal: React.FC = () => {
             }`}
           >
             <Tablet className="w-3.5 h-3.5" />
-            <span>Tablet</span>
+            <span>{t.authDeviceTablet}</span>
           </button>
           <button
             onClick={() => handleDeviceChange('mobile')}
@@ -103,7 +105,7 @@ export const AuthPortal: React.FC = () => {
             }`}
           >
             <Smartphone className="w-3.5 h-3.5" />
-            <span>Mobile Phone</span>
+            <span>{t.authDeviceMobile}</span>
           </button>
         </div>
       </div>

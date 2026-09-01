@@ -12,23 +12,21 @@ import {
   TreeDeciduous
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage, SupportedLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
   activeTab: 'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth';
   setActiveTab: (tab: 'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth') => void;
-  language: string;
-  setLanguage: (lang: string) => void;
   onResetDemo: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
-  language,
-  setLanguage,
   onResetDemo
 }) => {
   const { user } = useAuth();
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 glass-panel border-b border-slate-800/80 bg-slate-950/85">
@@ -52,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 hidden sm:block">
-                Dynamic Agri-Logistics & Telangana Crops Knowledge Explorer
+                {t.navTagline}
               </p>
             </div>
           </div>
@@ -68,10 +66,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Sprout className="h-4 w-4" />
-              <span>Farmer PWA</span>
+              <span>{t.navFarmerPwa}</span>
             </button>
 
-            {/* NEW TELANGANA CROPS TAB */}
+            {/* TELANGANA CROPS TAB */}
             <button
               onClick={() => setActiveTab('telangana')}
               className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
@@ -81,8 +79,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <TreeDeciduous className="h-4 w-4 text-teal-300" />
-              <span>🌾 Telangana Crops</span>
-              <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-teal-400/20 text-teal-200">33 Districts</span>
+              <span>{t.navTelanganaCrops}</span>
+              <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-teal-400/20 text-teal-200">33</span>
             </button>
 
             <button
@@ -94,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Warehouse className="h-4 w-4" />
-              <span>Hub Command Center</span>
+              <span>{t.navHubCenter}</span>
             </button>
 
             <button
@@ -106,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Smartphone className="h-4 w-4" />
-              <span>WhatsApp / SMS Bot</span>
+              <span>{t.navSmsBot}</span>
             </button>
 
             <button
@@ -118,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Award className="h-4 w-4 text-amber-300" />
-              <span>CSBS Judge Arena</span>
+              <span>{t.navJudgeArena}</span>
             </button>
 
             <button
@@ -130,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <UserCheck className="h-4 w-4" />
-              <span>{user ? `Kisan ID: ${user.name.split(' ')[0]}` : 'Login / Register'}</span>
+              <span>{user ? `${t.navKisanId}: ${user.name.split(' ')[0]}` : t.navLoginRegister}</span>
             </button>
 
             <button
@@ -142,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <Cloud className="h-4 w-4 text-cyan-400" />
-              <span>Cloud Deploy</span>
+              <span>{t.navCloudDeploy}</span>
             </button>
           </nav>
 
@@ -152,23 +150,23 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Live Engine Badge */}
             <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-[11px]">
               <Cpu className="h-3.5 w-3.5 text-emerald-400 animate-pulse" />
-              <span className="font-mono text-emerald-400 font-semibold">OR-Tools CP-SAT</span>
+              <span className="font-mono text-emerald-400 font-semibold">{t.navEngineBadge}</span>
             </div>
 
-            {/* Language Selector */}
-            <div className="flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800">
-              <Languages className="h-4 w-4 text-emerald-400" />
+            {/* Dynamic Multi-Language Selector */}
+            <div className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-emerald-950/40 border border-emerald-500/40 shadow-inner">
+              <Languages className="h-4 w-4 text-emerald-400 shrink-0" />
               <select
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
+                onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
                 aria-label="Select Interface Language"
-                className="bg-transparent text-xs font-medium text-slate-200 focus:outline-none cursor-pointer"
+                className="bg-transparent text-xs font-bold text-emerald-300 focus:outline-none cursor-pointer pr-1"
               >
-                <option value="en" className="bg-slate-900 text-slate-200">English</option>
-                <option value="hi" className="bg-slate-900 text-slate-200">हिन्दी (Hindi)</option>
-                <option value="te" className="bg-slate-900 text-slate-200">తెలుగు (Telugu)</option>
-                <option value="mr" className="bg-slate-900 text-slate-200">मराठी (Marathi)</option>
-                <option value="pa" className="bg-slate-900 text-slate-200">ਪੰਜਾਬੀ (Punjabi)</option>
+                <option value="en" className="bg-slate-900 text-slate-100">🇬🇧 English</option>
+                <option value="te" className="bg-slate-900 text-emerald-300 font-semibold">🌾 తెలుగు (Telugu)</option>
+                <option value="hi" className="bg-slate-900 text-slate-100">🇮🇳 हिन्दी (Hindi)</option>
+                <option value="mr" className="bg-slate-900 text-slate-100">🚩 मराठी (Marathi)</option>
+                <option value="pa" className="bg-slate-900 text-slate-100">🌾 ਪੰਜਾਬੀ (Punjabi)</option>
               </select>
             </div>
 
@@ -182,13 +180,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               <UserCheck className="h-4 w-4" />
-              <span>{user ? user.name.split(' ')[0] : 'Sign In / Register'}</span>
+              <span>{user ? user.name.split(' ')[0] : t.navLoginRegister}</span>
             </button>
 
             {/* Reset Demo Button */}
             <button
               onClick={onResetDemo}
-              title="Reset Live Demo Dataset"
+              title={t.navResetDemo}
               className="p-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-emerald-400 transition-colors"
             >
               <RefreshCw className="h-4 w-4" />
@@ -205,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Sprout className="h-3.5 w-3.5" />
-            <span>Farmer PWA</span>
+            <span>{t.navFarmerPwa}</span>
           </button>
           <button
             onClick={() => setActiveTab('telangana')}
@@ -214,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <TreeDeciduous className="h-3.5 w-3.5" />
-            <span>🌾 Telangana Crops</span>
+            <span>{t.navTelanganaCrops}</span>
           </button>
           <button
             onClick={() => setActiveTab('auth')}
@@ -223,7 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <UserCheck className="h-3.5 w-3.5" />
-            <span>Login / Register</span>
+            <span>{t.navLoginRegister}</span>
           </button>
           <button
             onClick={() => setActiveTab('hub')}
@@ -232,7 +230,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Warehouse className="h-3.5 w-3.5" />
-            <span>Hub Manager</span>
+            <span>{t.navHubCenter}</span>
           </button>
           <button
             onClick={() => setActiveTab('sms')}
@@ -241,7 +239,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Smartphone className="h-3.5 w-3.5" />
-            <span>WhatsApp Bot</span>
+            <span>{t.navSmsBot}</span>
           </button>
           <button
             onClick={() => setActiveTab('arena')}
@@ -250,7 +248,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Award className="h-3.5 w-3.5" />
-            <span>Judge Arena</span>
+            <span>{t.navJudgeArena}</span>
           </button>
           <button
             onClick={() => setActiveTab('deploy')}
@@ -259,7 +257,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Cloud className="h-3.5 w-3.5" />
-            <span>Cloud Deploy</span>
+            <span>{t.navCloudDeploy}</span>
           </button>
         </div>
       </div>

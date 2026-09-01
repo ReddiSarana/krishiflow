@@ -18,6 +18,7 @@ import {
   Share2
 } from 'lucide-react';
 import { CropType, VehicleType, SlotRequest, DigitalPass, CropProfile } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 interface FarmerPortalProps {
   crops: CropProfile[];
@@ -158,12 +159,12 @@ const UI_TEXT = {
 
 export const FarmerPortal: React.FC<FarmerPortalProps> = ({
   crops,
-  language,
   onBookSlot,
   activePass,
   setActivePass,
   onNavigateToAuth
 }) => {
+  const { language } = useLanguage();
   const t = UI_TEXT[language as keyof typeof UI_TEXT] || UI_TEXT.en;
 
   const [formData, setFormData] = useState<SlotRequest>({

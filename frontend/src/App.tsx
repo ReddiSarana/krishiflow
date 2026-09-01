@@ -8,13 +8,13 @@ import { CloudDeployModal } from './components/CloudDeployModal';
 import { AuthPortal } from './components/auth/AuthPortal';
 import { TelanganaCropsWindow } from './components/TelanganaCropsWindow';
 import { AuthProvider } from './context/AuthContext';
+import { LanguageProvider } from './context/LanguageContext';
 import { api } from './services/api';
 import { CropProfile, DigitalPass, ProcurementHub, NotificationItem, SimulationResult, SlotRequest, QueueStage } from './types';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export function AppContent() {
   const [activeTab, setActiveTab] = useState<'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth'>('farmer');
-  const [language, setLanguage] = useState<string>('en');
   
   const [crops, setCrops] = useState<CropProfile[]>([]);
   const [hubs, setHubs] = useState<ProcurementHub[]>([]);
@@ -158,8 +158,6 @@ export function AppContent() {
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        language={language}
-        setLanguage={setLanguage}
         onResetDemo={handleResetDemo}
       />
 
@@ -181,7 +179,7 @@ export function AppContent() {
         {activeTab === 'farmer' && (
           <FarmerPortal
             crops={crops}
-            language={language}
+            language="en"
             onBookSlot={handleBookSlot}
             activePass={activePass}
             setActivePass={setActivePass}
@@ -258,8 +256,10 @@ export function AppContent() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <LanguageProvider>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </LanguageProvider>
   );
 }

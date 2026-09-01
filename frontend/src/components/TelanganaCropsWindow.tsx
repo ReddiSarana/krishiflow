@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { TELANGANA_CROPS_DATA, TelanganaCrop } from '../data/telanganaCropsData';
+import { useLanguage } from '../context/LanguageContext';
 import { 
   Sprout, 
   Search, 
@@ -22,6 +23,7 @@ interface TelanganaCropsWindowProps {
 }
 
 export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSelectCropForBooking }) => {
+  const { t, language } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedSeason, setSelectedSeason] = useState<string>('All');
@@ -80,13 +82,13 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold mb-3 border border-emerald-500/30">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Telangana State Complete Agri-Horticulture Directory (తెలంగాణ పంటల విజ్ఞాన వేదిక)</span>
+              <span>{t.telanganaHeaderBadge}</span>
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Crops, Fruits, Vegetables, Millets & Flora of Telangana
+              {t.telanganaTitle}
             </h1>
             <p className="text-emerald-100/80 text-xs sm:text-sm mt-2 leading-relaxed">
-              Explore the rich agricultural diversity across all 33 districts of Telangana. From GI-tagged Tandur Red Gram, Warangal Teja Chilli, and Nizamabad Turmeric to Sri Dhanya Millets, Jagtial Mangoes, Nalgonda Sweet Oranges, Sericulture and Agroforestry.
+              {t.telanganaSubtitle}
             </p>
           </div>
 
@@ -94,15 +96,15 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 shrink-0">
             <div className="p-3 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-center">
               <div className="text-lg font-black text-emerald-400">{TELANGANA_CROPS_DATA.length}+</div>
-              <div className="text-[10px] text-slate-400">All Varieties</div>
+              <div className="text-[10px] text-slate-400">{t.telanganaCatalogedCrops}</div>
             </div>
             <div className="p-3 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-center">
-              <div className="text-lg font-black text-amber-400">9 Categories</div>
-              <div className="text-[10px] text-slate-400">Grains to Agroforestry</div>
+              <div className="text-lg font-black text-amber-400">{t.telanganaCategoriesCount}</div>
+              <div className="text-[10px] text-slate-400">Grains to Flora</div>
             </div>
             <div className="p-3 rounded-2xl bg-slate-900/80 border border-emerald-500/30 text-center col-span-2 sm:col-span-1">
-              <div className="text-lg font-black text-teal-400">33</div>
-              <div className="text-[10px] text-slate-400">Districts Covered</div>
+              <div className="text-lg font-black text-teal-400">{t.telanganaDistrictsCount}</div>
+              <div className="text-[10px] text-slate-400">All 33 Covered</div>
             </div>
           </div>
         </div>
@@ -119,7 +121,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by Crop (e.g. వరి, Paddy, Cotton, పత్తి, Mango, Nizamabad, Turmeric)..."
+              placeholder={t.telanganaSearchPlaceholder}
               className="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-slate-700/80 rounded-2xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 placeholder:text-slate-500"
             />
             {searchQuery && (
@@ -139,7 +141,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
               onChange={(e) => setSelectedDistrict(e.target.value)}
               className="px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs font-medium text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
             >
-              <option value="All">All Districts (అన్ని జిల్లాలు)</option>
+              <option value="All">{t.telanganaAllDistricts}</option>
               {allDistricts.filter(d => d !== 'All').map(d => (
                 <option key={d} value={d}>{d}</option>
               ))}
@@ -150,7 +152,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
               onChange={(e) => setSelectedSeason(e.target.value)}
               className="px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs font-medium text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
             >
-              <option value="All">All Seasons (అన్ని రుతువులు)</option>
+              <option value="All">{t.telanganaAllSeasons}</option>
               <option value="Kharif">Kharif (వానకాలం)</option>
               <option value="Rabi">Rabi (యాసంగి)</option>
               <option value="Summer">Summer (వేసవి)</option>
@@ -162,7 +164,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
               onChange={(e) => setSelectedWater(e.target.value)}
               className="px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs font-medium text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
             >
-              <option value="All">Water Need (నీటి అవసరం)</option>
+              <option value="All">{t.telanganaWaterNeed}</option>
               <option value="Low">Low (మెట్ట / డ్రైలాండ్)</option>
               <option value="Medium">Medium (మధ్యస్థ)</option>
               <option value="High">High (ఎక్కువ)</option>
@@ -195,7 +197,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
       <div>
         <div className="flex items-center justify-between mb-4">
           <div className="text-xs font-semibold text-slate-400">
-            Showing <span className="text-emerald-400 font-bold">{filteredCrops.length}</span> Telangana Crops & Plants
+            {t.telanganaShowing} <span className="text-emerald-400 font-bold">{filteredCrops.length}</span> {t.telanganaCropsFlora}
           </div>
           {(selectedCategory !== 'All' || selectedSeason !== 'All' || selectedDistrict !== 'All' || selectedWater !== 'All' || searchQuery) && (
             <button
@@ -208,7 +210,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
               }}
               className="text-xs text-emerald-400 hover:underline"
             >
-              Reset Filters
+              {t.telanganaResetFilters}
             </button>
           )}
         </div>
@@ -242,10 +244,10 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="font-bold text-white text-base tracking-tight leading-snug group-hover:text-emerald-300 transition-colors">
-                        {crop.name}
+                        {language === 'te' ? crop.teluguName : crop.name}
                       </h3>
                       <p className="text-xs text-emerald-400 font-medium mt-0.5 font-sans">
-                        {crop.teluguName}
+                        {language === 'te' ? crop.name : crop.teluguName}
                       </p>
                       <span className="inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-800 text-slate-400">
                         {crop.category}
@@ -262,25 +264,25 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
                   <div className="space-y-2 py-3 border-y border-slate-800/80 text-xs">
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500 flex items-center gap-1">
-                        <TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> Mandi Benchmark:
+                        <TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> {t.telanganaMandiBenchmark}:
                       </span>
                       <span className="font-bold text-emerald-400">{crop.mandiPriceRange.split(' ')[0]} {crop.mandiPriceRange.split(' ')[1]}</span>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500 flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5 text-teal-400" /> Season:
+                        <Calendar className="w-3.5 h-3.5 text-teal-400" /> {t.telanganaSeason}:
                       </span>
                       <span className="font-medium text-slate-300 text-[11px]">{crop.season.split(' ')[0]}</span>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <span className="text-slate-500 flex items-center gap-1">
-                        <Droplets className="w-3.5 h-3.5 text-cyan-400" /> Water Need:
+                        <Droplets className="w-3.5 h-3.5 text-cyan-400" /> {t.telanganaWater}:
                       </span>
                       <span className={`font-semibold text-[11px] ${
-                        crop.waterRequirement === 'Low' ? 'text-emerald-400' :
-                        crop.waterRequirement === 'Medium' ? 'text-amber-400' : 'text-cyan-400'
+                        crop.waterRequirement.toLowerCase().includes('low') ? 'text-emerald-400' :
+                        crop.waterRequirement.toLowerCase().includes('medium') ? 'text-amber-400' : 'text-cyan-400'
                       }`}>
                         {crop.waterRequirement}
                       </span>
@@ -308,16 +310,16 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
                     className="flex-1 py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all flex items-center justify-center gap-1"
                   >
                     <Info className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Cultivation Guide</span>
+                    <span>{t.telanganaCultivationGuide}</span>
                   </button>
 
                   {onSelectCropForBooking && (
                     <button
                       onClick={() => onSelectCropForBooking(crop.name.split(' ')[0])}
                       className="py-2 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-semibold shadow-md shadow-emerald-950/40 transition-all flex items-center gap-1"
-                      title="Book Delivery Slot in KrishiFlow"
+                      title={t.telanganaBookSlotFor}
                     >
-                      <span>Book Slot</span>
+                      <span>{t.telanganaBookSlot}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   )}
@@ -353,10 +355,10 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
                   <span className="text-xs text-slate-400">{activeCropModal.season}</span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-white mt-1">
-                  {activeCropModal.name}
+                  {language === 'te' ? activeCropModal.teluguName : activeCropModal.name}
                 </h2>
                 <p className="text-sm text-emerald-400 font-medium">
-                  {activeCropModal.teluguName}
+                  {language === 'te' ? activeCropModal.name : activeCropModal.teluguName}
                 </p>
               </div>
             </div>
@@ -374,7 +376,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
 
             {/* Description */}
             <div className="mb-6">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">Cultivation Overview</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">{t.telanganaOverview}</h4>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 {activeCropModal.description}
               </p>
@@ -383,22 +385,22 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
             {/* Key Grid Telemetry */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
               <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
-                <div className="text-[11px] text-slate-400">Suitable Soil Type (అనుకూల నేలలు)</div>
+                <div className="text-[11px] text-slate-400">{t.telanganaSuitableSoil}</div>
                 <div className="text-xs font-bold text-white mt-1">{activeCropModal.soilType}</div>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
-                <div className="text-[11px] text-slate-400">Crop Duration & Lifecycle</div>
+                <div className="text-[11px] text-slate-400">{t.telanganaDuration}</div>
                 <div className="text-xs font-bold text-emerald-400 mt-1">{activeCropModal.durationDays}</div>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
-                <div className="text-[11px] text-slate-400">Average Yield Per Acre (ఎకరాకు దిగుబడి)</div>
+                <div className="text-[11px] text-slate-400">{t.telanganaAvgYield}</div>
                 <div className="text-xs font-bold text-teal-400 mt-1">{activeCropModal.avgYieldPerAcre}</div>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
-                <div className="text-[11px] text-slate-400">APMC Mandi Price Range (మార్కెట్ ధర)</div>
+                <div className="text-[11px] text-slate-400">{t.telanganaPriceRange}</div>
                 <div className="text-xs font-bold text-amber-400 mt-1">{activeCropModal.mandiPriceRange}</div>
               </div>
             </div>
@@ -406,7 +408,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
             {/* High-Yield Varieties */}
             <div className="mb-6">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-emerald-400" /> Recommended Telangana Varieties (రకాలు)
+                <Layers className="w-3.5 h-3.5 text-emerald-400" /> {t.telanganaRecommendedVarieties}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {activeCropModal.popularVarieties.map((v, i) => (
@@ -420,7 +422,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
             {/* Major Growing Districts */}
             <div className="mb-6">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-emerald-400" /> Key Cultivating Districts (ప్రధాన జిల్లాలు)
+                <MapPin className="w-3.5 h-3.5 text-emerald-400" /> {t.telanganaKeyDistricts}
               </h4>
               <div className="flex flex-wrap gap-1.5">
                 {activeCropModal.majorDistricts.map((d, i) => (
@@ -433,7 +435,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
 
             {/* Key Advantages */}
             <div className="mb-6">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Farmer Advantages</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{t.telanganaFarmerBenefits}</h4>
               <div className="space-y-1.5">
                 {activeCropModal.keyBenefits.map((b, i) => (
                   <div key={i} className="flex items-center gap-2 text-xs text-slate-300">
@@ -447,7 +449,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
             {/* Modal Bottom CTA */}
             <div className="pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
               <div className="text-xs text-slate-400">
-                Primary Hub: <span className="text-white font-medium">{activeCropModal.procurementHub}</span>
+                {t.telanganaPrimaryHub}: <span className="text-white font-medium">{activeCropModal.procurementHub}</span>
               </div>
 
               {onSelectCropForBooking && (
@@ -459,7 +461,7 @@ export const TelanganaCropsWindow: React.FC<TelanganaCropsWindowProps> = ({ onSe
                   }}
                   className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-900/40 flex items-center gap-2"
                 >
-                  <span>Book {activeCropModal.name.split(' ')[0]} Delivery Slot</span>
+                  <span>{t.telanganaBookSlotFor} ({activeCropModal.name.split(' ')[0]})</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               )}

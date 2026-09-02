@@ -4,10 +4,11 @@ import { LoginForm } from './LoginForm';
 import { RegisterForm } from './RegisterForm';
 import { ForgotPasswordForm } from './ForgotPasswordForm';
 import { OtpVerificationForm } from './OtpVerificationForm';
+import { LandVerificationScreen } from './LandVerificationScreen';
 import { BiometricAuthModal } from './BiometricAuthModal';
 import { WebAuthLayout } from '../layout/WebAuthLayout';
 import { MobileAuthLayout } from '../layout/MobileAuthLayout';
-import { Monitor, Tablet, Smartphone, LogOut, Award, MapPin, CheckCircle } from 'lucide-react';
+import { Monitor, Tablet, Smartphone, LogOut, Award, MapPin, CheckCircle, ShieldCheck } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -21,6 +22,9 @@ export const AuthPortal: React.FC = () => {
   };
 
   const getContainerWidth = () => {
+    if (currentScreen === 'land-verification') {
+      return 'max-w-5xl w-full';
+    }
     switch (deviceMode) {
       case 'desktop':
         return 'max-w-6xl w-full';
@@ -35,6 +39,8 @@ export const AuthPortal: React.FC = () => {
 
   const renderScreen = () => {
     switch (currentScreen) {
+      case 'land-verification':
+        return <LandVerificationScreen />;
       case 'register':
         return <RegisterForm />;
       case 'forgot-password':
@@ -62,13 +68,14 @@ export const AuthPortal: React.FC = () => {
       <div className="glass-panel p-4 rounded-3xl border border-slate-800 bg-slate-950/70 flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h2 className="text-base font-bold text-white">KrishiFlow Identity & Access Management</h2>
-            <span className="px-2.5 py-0.5 text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full">
-              Web & Mobile Dual Interface
+            <h2 className="text-base font-bold text-white">KrishiFlow Kisan Identity & Access Management</h2>
+            <span className="px-2.5 py-0.5 text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3" />
+              Telangana Dharani Verified
             </span>
           </div>
           <p className="text-xs text-slate-400 mt-0.5">
-            Test responsive authentication, OTP SMS delivery, password strength, and biometric passkeys.
+            రైతు లాగిన్, రిజిస్ట్రేషన్ మరియు ధరణి పట్టాదారు పాస్‌బుక్ ధృవీకరణ పోర్టల్
           </p>
         </div>
 
@@ -134,7 +141,7 @@ export const AuthPortal: React.FC = () => {
                       <span>•</span>
                       <span className="flex items-center gap-1 text-emerald-400">
                         <MapPin className="w-3 h-3" />
-                        {user?.farmLocation || 'Indore Hub Slot #412'}
+                        {user?.farmLocation || user?.landRecord?.district || 'Warangal, Telangana'}
                       </span>
                     </div>
                   </div>
@@ -150,56 +157,44 @@ export const AuthPortal: React.FC = () => {
                 </Button>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 my-5">
-                <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
-                  <div className="text-xs text-slate-400">Security Protection</div>
-                  <div className="text-base font-bold text-emerald-400 mt-1">2FA + Passkey</div>
-                  <div className="text-[10px] text-slate-500 mt-0.5">FIDO2 & OTP enabled</div>
+              {/* Status Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-6">
+                <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+                  <span className="text-xs text-slate-400 block mb-1">Pattadar Passbook</span>
+                  <div className="font-mono text-sm font-bold text-emerald-400">
+                    {user?.landRecord?.pattadarPassbookNo || 'T-284910294'}
+                  </div>
+                  <span className="text-[10px] text-slate-500">
+                    Survey #{user?.landRecord?.surveyNo || '142/A'} &bull; {user?.landRecord?.totalAcres || '4.5'} Acres
+                  </span>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
-                  <div className="text-xs text-slate-400">Active Gate Pass</div>
-                  <div className="text-base font-bold text-teal-400 mt-1">Token #TK-7842</div>
-                  <div className="text-[10px] text-slate-500 mt-0.5">Indore Bay 3 Assigned</div>
-                </div>
-                <div className="p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
-                  <div className="text-xs text-slate-400">Cross-Device Sync</div>
-                  <div className="text-base font-bold text-amber-400 mt-1">PWA & SMS Linked</div>
-                  <div className="text-[10px] text-slate-500 mt-0.5">Automatic session handoff</div>
+
+                <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+                  <span className="text-xs text-slate-400 block mb-1">Dharani Verification</span>
+                  <div className="font-mono text-sm font-bold text-teal-300">
+                    {user?.landRecord?.dharaniCertificateId || 'DH-TEL-WGL-2026-89421'}
+                  </div>
+                  <span className="text-[10px] text-emerald-400">
+                    ✓ Verified via Telangana Land Records
+                  </span>
                 </div>
               </div>
 
-              <div className="bg-emerald-950/40 border border-emerald-500/30 rounded-2xl p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
-                    <CheckCircle className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-white">Kisan Session Active & Authenticated</div>
-                    <div className="text-[11px] text-slate-400">You can now book priority bays and manage queue tokens.</div>
-                  </div>
-                </div>
+              {/* Navigation Actions */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => setCurrentScreen('login')}
+                  variant="primary"
+                  size="md"
+                  onClick={() => setCurrentScreen('dashboard')}
+                  className="flex-1 justify-center bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold"
                 >
-                  Test Login Form
+                  రైతు ప్రొఫైల్ & పంటలు చూడండి
                 </Button>
               </div>
             </div>
-          ) : deviceMode === 'mobile' ? (
-            /* Mobile Device Frame */
-            <div className="phone-frame relative overflow-hidden bg-slate-900 border-8 border-slate-800 rounded-[44px] shadow-2xl">
-              <div className="w-32 h-6 bg-black rounded-b-2xl absolute top-0 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-2">
-                <div className="w-2.5 h-2.5 bg-slate-900 rounded-full border border-slate-700" />
-                <div className="w-10 h-1 bg-slate-800 rounded-full" />
-              </div>
-              <div className="pt-6">
-                <MobileAuthLayout>{renderScreen()}</MobileAuthLayout>
-              </div>
-            </div>
+          ) : deviceMode === 'mobile' || deviceMode === 'tablet' ? (
+            <MobileAuthLayout>{renderScreen()}</MobileAuthLayout>
           ) : (
-            /* Web Desktop / Tablet Layout */
             <WebAuthLayout>{renderScreen()}</WebAuthLayout>
           )}
         </div>

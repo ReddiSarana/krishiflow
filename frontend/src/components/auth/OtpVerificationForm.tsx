@@ -5,7 +5,7 @@ import { Button } from '../ui/Button';
 import { ShieldAlert, ArrowLeft } from 'lucide-react';
 
 export const OtpVerificationForm: React.FC = () => {
-  const { otpTarget, setUser, setCurrentScreen, showToast } = useAuth();
+  const { otpTarget, setUser, setCurrentScreen, setPendingRegistration, showToast } = useAuth();
   const [otp, setOtp] = useState<string[]>(['', '', '', '', '', '']);
   const [countdown, setCountdown] = useState<number>(45);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -70,17 +70,16 @@ export const OtpVerificationForm: React.FC = () => {
     setIsVerifying(true);
     try {
       await authService.verifyOtp(code);
-      setUser({
-        id: 'KF_' + Math.random().toString(36).substring(2, 8).toUpperCase(),
-        name: otpTarget.includes('@') ? otpTarget.split('@')[0] : 'Ramesh Patel (Kisan)',
-        email: otpTarget.includes('@') ? otpTarget : 'ramesh.farmer@krishiflow.in',
-        phone: !otpTarget.includes('@') ? otpTarget : '+91 98765 43210',
+      setPendingRegistration({
+        id: 'KISAN-TEL-' + Math.floor(100000 + Math.random() * 900000),
+        name: otpTarget.includes('@') ? otpTarget.split('@')[0] : 'మల్లేశం గౌడ్ (Mallesham Goud)',
+        email: otpTarget.includes('@') ? otpTarget : 'kisan.mallesham@krishiflow.in',
+        phone: !otpTarget.includes('@') ? otpTarget : '+91 98490 12345',
         role: 'farmer',
-        farmLocation: 'Indore Mandi Hub, Bay 3',
         createdAt: new Date().toISOString(),
       });
-      setCurrentScreen('dashboard');
-      showToast('Verification Successful', 'Welcome to your KrishiFlow Hub!', 'success');
+      setCurrentScreen('land-verification');
+      showToast('OTP ధృవీకరించబడింది!', 'దయచేసి మీ పట్టాదారు పాస్‌బుక్ & భూమి రికార్డులను నమోదు చేయండి.', 'success');
     } catch {
       showToast('Verification Failed', 'Invalid security code. Please check and retry.', 'error');
     } finally {

@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { AuthPortal } from './components/auth/AuthPortal';
 import { TelanganaCropsWindow } from './components/TelanganaCropsWindow';
-import { AuthProvider } from './context/AuthContext';
+import { FarmerProfileWindow } from './components/profile/FarmerProfileWindow';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export function AppContent() {
-  const [activeTab, setActiveTab] = useState<'telangana' | 'auth'>('telangana');
+  const { user } = useAuth();
+  const [activeTab, setActiveTab] = useState<'crops' | 'profile' | 'auth'>('auth');
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'info' | 'alert' } | null>(null);
+
+  // Synchronize active tab based on user auth status
+  useEffect(() => {
+    if (user && user.landRecord?.isVerified) {
+      if (activeTab === 'auth') {
+        setActiveTab('crops');
+      }
+    } else {
+      setActiveTab('auth');
+    }
+  }, [user]);
 
   const showToast = (text: string, type: 'success' | 'info' | 'alert' = 'success') => {
     setToastMessage({ text, type });
@@ -16,8 +29,10 @@ export function AppContent() {
   };
 
   const handleResetDemo = () => {
-    showToast('Telangana Agri-Directory refreshed to latest market benchmark data.', 'info');
+    showToast('తెలంగాణ పంటల సమాచారం & మార్కెట్ ధరలు తాజాకరించబడ్డాయి.', 'info');
   };
+
+  const isUserVerified = Boolean(user && user.landRecord?.isVerified);
 
   return (
     <div className="min-h-screen bg-[#030712] text-slate-100 flex flex-col font-sans">
@@ -31,17 +46,29 @@ export function AppContent() {
 
       {/* Main Content Area */}
       <main className="flex-1 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 w-full">
-        {activeTab === 'telangana' && (
-          <TelanganaCropsWindow
-            onSelectCropForBooking={(cropName) => {
-              setActiveTab('auth');
-              showToast(`Pre-selected ${cropName}. Please sign in with your Kisan ID to confirm delivery slot!`, 'info');
-            }}
-          />
-        )}
-
-        {activeTab === 'auth' && (
+        
+        {/* If Not Authenticated or Land Not Verified, Show Auth Portal (Sign In / Register / Land Verification) */}
+        {!isUserVerified || activeTab === 'auth' ? (
           <AuthPortal />
+        ) : (
+          <>
+            {/* Authenticated Tab 1: Telangana Crops & Flora Window */}
+            {activeTab === 'crops' && (
+              <TelanganaCropsWindow
+                onSelectCropForBooking={(cropName) => {
+                  setActiveTab('profile');
+                  showToast(`${cropName} ఎంపిక చేయబడింది. మీ రైతు ప్రొఫైల్ & సాగు విస్తీర్ణంలో నమోదు చేయండి!`, 'info');
+                }}
+              />
+            )}
+
+            {/* Authenticated Tab 2: Farmer Profile & Land Passport Window */}
+            {activeTab === 'profile' && (
+              <FarmerProfileWindow
+                onNavigateToCrops={() => setActiveTab('crops')}
+              />
+            )}
+          </>
         )}
       </main>
 
@@ -70,10 +97,10 @@ export function AppContent() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
             <span className="font-bold text-slate-300">KrishiFlow</span>
-            <span>&bull; Telangana Agri-Horticulture & Flora Intelligence Portal</span>
+            <span>&bull; తెలంగాణ వ్యవసాయ & ఉద్యానవన పంటల విజ్ఞాన వేదిక</span>
           </div>
           <div>
-            Built for 33 Districts of Telangana & Direct Farmer Value Discovery
+            33 జిల్లాల పంటల సమాచారం &bull; ధరణి భూమి ధృవీకరణ &bull; డిజిటల్ కిసాన్ పాస్‌పోర్ట్
           </div>
         </div>
       </footer>

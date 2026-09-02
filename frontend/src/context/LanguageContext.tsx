@@ -6,6 +6,8 @@ export interface Translations {
   // Navigation
   navFarmerPwa: string;
   navTelanganaCrops: string;
+  navFarmerProfile: string;
+  navLandVerification: string;
   navHubCenter: string;
   navSmsBot: string;
   navJudgeArena: string;
@@ -164,6 +166,8 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
   en: {
     navFarmerPwa: 'Farmer PWA',
     navTelanganaCrops: '🌾 Telangana Crops',
+    navFarmerProfile: '👤 My Profile & Land Passport',
+    navLandVerification: '📄 Land Verification',
     navHubCenter: 'Hub Command Center',
     navSmsBot: 'WhatsApp / SMS Bot',
     navJudgeArena: 'CSBS Judge Arena',
@@ -171,7 +175,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navKisanId: 'Kisan ID',
     navCloudDeploy: 'Cloud Deploy',
     navEngineBadge: 'OR-Tools CP-SAT',
-    navTagline: 'Dynamic Agri-Logistics & Telangana Crops Knowledge Explorer',
+    navTagline: 'Telangana Agri-Horticulture & Dharani Land Intelligence Portal',
     navResetDemo: 'Reset Live Demo Dataset',
 
     telanganaHeaderBadge: 'Telangana State Complete Agri-Horticulture Directory',
@@ -315,6 +319,8 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
   te: {
     navFarmerPwa: 'రైతు పోర్టల్ (PWA)',
     navTelanganaCrops: '🌾 తెలంగాణ పంటలు',
+    navFarmerProfile: '👤 నా ప్రొఫైల్ & భూమి పాస్‌పోర్ట్',
+    navLandVerification: '📄 భూమి ధృవీకరణ',
     navHubCenter: 'హబ్ కమాండ్ సెంటర్',
     navSmsBot: 'వాట్సాప్ / SMS బాట్',
     navJudgeArena: 'జడ్జ్ అరేనా',
@@ -322,7 +328,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navKisanId: 'కిసాన్ ఐడీ',
     navCloudDeploy: 'క్లౌడ్ డిప్లాయ్',
     navEngineBadge: 'OR-టూల్స్ AI ఇంజిన్',
-    navTagline: 'తెలంగాణ సమగ్ర పంటలు మరియు డైనమిక్ వ్యవసాయ లాజిస్టిక్స్ పోర్టల్',
+    navTagline: 'తెలంగాణ సమగ్ర పంటలు మరియు ధరణి భూమి సమాచార పోర్టల్',
     navResetDemo: 'డెమో రీసెట్ చేయండి',
 
     telanganaHeaderBadge: 'తెలంగాణ రాష్ట్ర సమగ్ర వ్యవసాయ & ఉద్యానవన పంటల విజ్ఞాన వేదిక',
@@ -466,6 +472,8 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
   hi: {
     navFarmerPwa: 'किसान पोर्टल (PWA)',
     navTelanganaCrops: '🌾 तेलंगाना फसलें',
+    navFarmerProfile: '👤 मेरा प्रोफाइल व भूमि पासपोर्ट',
+    navLandVerification: '📄 भूमि सत्यापन',
     navHubCenter: 'मंडी कमांड सेंटर',
     navSmsBot: 'व्हाट्सएप / SMS बॉट',
     navJudgeArena: 'जज एरीना',
@@ -473,7 +481,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navKisanId: 'किसान आईडी',
     navCloudDeploy: 'क्लाउड डिप्लॉय',
     navEngineBadge: 'OR-टूल्स CP-SAT',
-    navTagline: 'तेलंगाना कृषि निर्देशिका एवं गतिशील कृषि-लॉजिस्टिक्स प्रणाली',
+    navTagline: 'तेलंगाना कृषि एवं धरणी भूमि रिकॉर्ड पोर्टल',
     navResetDemo: 'डेमो डेटा रीसेट करें',
 
     telanganaHeaderBadge: 'तेलंगाना राज्य संपूर्ण कृषि एवं बागवानी निर्देशिका',
@@ -617,6 +625,8 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
   mr: {
     navFarmerPwa: 'शेतकरी पोर्टल (PWA)',
     navTelanganaCrops: '🌾 तेलंगणा पिके',
+    navFarmerProfile: '👤 माझे प्रोफाइल व जमीन पासपोर्ट',
+    navLandVerification: '📄 जमीन पडताळणी',
     navHubCenter: 'खरेदी केंद्र नियंत्रण',
     navSmsBot: 'व्हॉट्सॲप / SMS बॉट',
     navJudgeArena: 'परीक्षक दालन',
@@ -624,7 +634,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navKisanId: 'किसान आयडी',
     navCloudDeploy: 'क्लाउड डिप्लॉय',
     navEngineBadge: 'OR-टूल्स CP-SAT',
-    navTagline: 'तेलंगणा पिके निर्देशिका आणि कृषी लॉजिस्टिक्स प्लॅटफॉर्म',
+    navTagline: 'तेलंगणा पिके व धरणी जमीन माहिती पोर्टल',
     navResetDemo: 'डेमो डेटा पूर्ववत करा',
 
     telanganaHeaderBadge: 'तेलंगणा राज्य सर्वसमावेशक कृषी व फलोत्पादन निर्देशिका',
@@ -768,6 +778,8 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
   pa: {
     navFarmerPwa: 'ਕਿਸਾਨ ਪੋਰਟਲ (PWA)',
     navTelanganaCrops: '🌾 ਤੇਲੰਗਾਨਾ ਫਸਲਾਂ',
+    navFarmerProfile: '👤 ਮੇਰਾ ਪ੍ਰੋਫਾਈਲ ਤੇ ਜ਼ਮੀਨ ਪਾਸਪੋਰਟ',
+    navLandVerification: '📄 ਜ਼ਮੀਨ ਤਸਦੀਕ',
     navHubCenter: 'ਮੰਡੀ ਕਮਾਂਡ ਸੈਂਟਰ',
     navSmsBot: 'ਵਟਸਐਪ / SMS ਬੋਟ',
     navJudgeArena: 'ਜੱਜ ਅਰੀਨਾ',
@@ -775,7 +787,7 @@ export const TRANSLATIONS: Record<SupportedLanguage, Translations> = {
     navKisanId: 'ਕਿਸਾਨ ਆਈਡੀ',
     navCloudDeploy: 'ਕਲਾਉਡ ਡਿਪਲਾਏ',
     navEngineBadge: 'OR-ਟੂਲਸ CP-SAT',
-    navTagline: 'ਤੇਲੰਗਾਨਾ ਫਸਲਾਂ ਡਾਇਰੈਕਟਰੀ ਅਤੇ ਐਗਰੀ-ਲਾਜਿਸਟਿਕਸ ਪੋਰਟਲ',
+    navTagline: 'ਤੇਲੰਗਾਨਾ ਫਸਲਾਂ ਅਤੇ ਧਰਣੀ ਜ਼ਮੀਨ ਰਿਕਾਰਡ ਪੋਰਟਲ',
     navResetDemo: 'ਡੈਮੋ ਰੀਸੈਟ ਕਰੋ',
 
     telanganaHeaderBadge: 'ਤੇਲੰਗਾਨਾ ਰਾਜ ਸੰਪੂਰਨ ਖੇਤੀਬਾੜੀ ਅਤੇ ਬਾਗਬਾਨੀ ਡਾਇਰੈਕਟਰੀ',

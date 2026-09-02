@@ -12,7 +12,7 @@ import { useLanguage } from '../../context/LanguageContext';
 
 export const RegisterForm: React.FC = () => {
   const { t } = useLanguage();
-  const { setCurrentScreen, setOtpTarget, showToast } = useAuth();
+  const { setCurrentScreen, setOtpTarget, setPendingRegistration, showToast } = useAuth();
 
   const [role, setRole] = useState<UserRole>('farmer');
   const [name, setName] = useState('');
@@ -71,11 +71,19 @@ export const RegisterForm: React.FC = () => {
     setIsLoading(true);
     try {
       await authService.register(name, email, password, role);
+      setPendingRegistration({
+        id: `KISAN-TEL-${Math.floor(100000 + Math.random() * 900000)}`,
+        name,
+        email,
+        phone,
+        role,
+        createdAt: new Date().toISOString()
+      });
       setOtpTarget(phone);
-      setCurrentScreen('otp');
+      setCurrentScreen('land-verification');
       showToast(
-        'Registration Initiated!',
-        `We have sent an activation OTP to ${phone}`,
+        'ఖాతా నమోదు పూర్తయింది! (Registration Successful)',
+        `నమస్తే ${name}! దయచేసి మీ పట్టాదారు పాస్‌బుక్ & భూమి రికార్డులను ధృవీకరించండి.`,
         'success'
       );
     } catch {

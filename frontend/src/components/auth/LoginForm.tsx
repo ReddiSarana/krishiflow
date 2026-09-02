@@ -48,18 +48,30 @@ export const LoginForm: React.FC = () => {
     try {
       if (method === 'phone') {
         const fullPhone = `${phoneCountry} ${phoneNumber}`;
-        await authService.sendOtp(fullPhone);
-        setOtpTarget(fullPhone);
-        setCurrentScreen('otp');
-        showToast('Kisan OTP Sent', `Security PIN sent to ${fullPhone}`, 'info');
+        const user = await authService.loginWithPhone(fullPhone);
+        setUser(user);
+        setCurrentScreen('dashboard');
+        showToast('స్వాగతం!', `నమస్తే ${user.name}! విజయవంతంగా లాగిన్ అయ్యారు.`, 'success');
       } else {
         const user = await authService.loginWithEmail(email, password);
         setUser(user);
         setCurrentScreen('dashboard');
-        showToast('Welcome to KrishiFlow!', `Signed in as ${user.name}`, 'success');
+        showToast('స్వాగతం!', `నమస్తే ${user.name}! విజయవంతంగా లాగిన్ అయ్యారు.`, 'success');
       }
     } catch {
       showToast('Authentication Failed', 'Please verify your credentials and try again', 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleQuickDemoLogin = async () => {
+    setIsLoading(true);
+    try {
+      const user = await authService.loginWithEmail('kisan.mallesham@krishiflow.in', 'password123');
+      setUser(user);
+      setCurrentScreen('dashboard');
+      showToast('స్వాగతం!', `నమస్తే మల్లేశం గౌడ్ (వరంగల్)! విజయవంతంగా లాగిన్ అయ్యారు.`, 'success');
     } finally {
       setIsLoading(false);
     }
@@ -199,8 +211,18 @@ export const LoginForm: React.FC = () => {
           className="w-full mt-2"
           size="lg"
         >
-          {method === 'phone' ? 'Get Instant OTP (ओटीपी पाएं)' : 'Sign In to KrishiFlow'}
+          {method === 'phone' ? 'రైతు లాగిన్ (Sign In with Mobile)' : 'Sign In to KrishiFlow'}
         </Button>
+
+        {/* 1-Click Instant Demo Login */}
+        <button
+          type="button"
+          onClick={handleQuickDemoLogin}
+          disabled={isLoading}
+          className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-950/80 to-slate-900 border border-emerald-500/40 hover:border-emerald-400 text-emerald-300 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-950/40"
+        >
+          <span>⚡ తక్షణ రైతు లాగిన్ (1-Click Instant Kisan Sign In)</span>
+        </button>
       </form>
 
       <SocialAuthButtons actionLabel="continue" />

@@ -1,10 +1,6 @@
 import React from 'react';
 import { 
   Sprout, 
-  Warehouse, 
-  Smartphone, 
-  Award, 
-  Cloud, 
   Languages, 
   RefreshCw,
   Cpu,
@@ -15,8 +11,8 @@ import { useAuth } from '../context/AuthContext';
 import { useLanguage, SupportedLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
-  activeTab: 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth';
-  setActiveTab: (tab: 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth') => void;
+  activeTab: 'telangana' | 'auth';
+  setActiveTab: (tab: 'telangana' | 'auth') => void;
   onResetDemo: () => void;
 }
 
@@ -56,11 +52,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Navigation Tabs */}
-          <nav className="hidden lg:flex items-center space-x-1 p-1 rounded-2xl bg-slate-900/90 border border-slate-800">
+          <nav className="hidden sm:flex items-center space-x-2 p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800">
             {/* TELANGANA CROPS TAB */}
             <button
               onClick={() => setActiveTab('telangana')}
-              className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
                 activeTab === 'telangana'
                   ? 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-md shadow-teal-900/40 glow-emerald'
                   : 'text-teal-400 hover:text-teal-200 hover:bg-teal-500/10'
@@ -68,48 +64,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <TreeDeciduous className="h-4 w-4 text-teal-300" />
               <span>{t.navTelanganaCrops}</span>
-              <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-teal-400/20 text-teal-200">33</span>
+              <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-teal-400/20 text-teal-200 font-bold">33</span>
             </button>
 
-            <button
-              onClick={() => setActiveTab('hub')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                activeTab === 'hub'
-                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-900/40 glow-emerald'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-              }`}
-            >
-              <Warehouse className="h-4 w-4" />
-              <span>{t.navHubCenter}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('sms')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                activeTab === 'sms'
-                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-900/40 glow-emerald'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-              }`}
-            >
-              <Smartphone className="h-4 w-4" />
-              <span>{t.navSmsBot}</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('arena')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                activeTab === 'arena'
-                  ? 'bg-gradient-to-r from-amber-500 to-emerald-500 text-white shadow-md shadow-amber-900/40 glow-amber'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-              }`}
-            >
-              <Award className="h-4 w-4 text-amber-300" />
-              <span>{t.navJudgeArena}</span>
-            </button>
-
+            {/* AUTH / LOGIN TAB */}
             <button
               onClick={() => setActiveTab('auth')}
-              className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
+              className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
                 activeTab === 'auth'
                   ? 'bg-emerald-600 text-white shadow-md shadow-emerald-900/40 glow-emerald'
                   : 'text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10'
@@ -118,25 +79,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <UserCheck className="h-4 w-4" />
               <span>{user ? `${t.navKisanId}: ${user.name.split(' ')[0]}` : t.navLoginRegister}</span>
             </button>
-
-            <button
-              onClick={() => setActiveTab('deploy')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                activeTab === 'deploy'
-                  ? 'bg-cyan-600 text-white shadow-md shadow-cyan-900/40'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-              }`}
-            >
-              <Cloud className="h-4 w-4 text-cyan-400" />
-              <span>{t.navCloudDeploy}</span>
-            </button>
           </nav>
 
           {/* Right Action Bar */}
           <div className="flex items-center space-x-2.5 sm:space-x-4">
             
             {/* Live Engine Badge */}
-            <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-[11px]">
+            <div className="hidden md:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-900 border border-slate-800 text-slate-300 text-[11px]">
               <Cpu className="h-3.5 w-3.5 text-emerald-400 animate-pulse" />
               <span className="font-mono text-emerald-400 font-semibold">{t.navEngineBadge}</span>
             </div>
@@ -183,10 +132,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile Navigation Tabs */}
-        <div className="flex lg:hidden overflow-x-auto py-2.5 space-x-2 border-t border-slate-800/80 no-scrollbar">
+        <div className="flex sm:hidden overflow-x-auto py-2.5 space-x-2 border-t border-slate-800/80 no-scrollbar">
           <button
             onClick={() => setActiveTab('telangana')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
+            className={`flex-1 flex items-center justify-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
               activeTab === 'telangana' ? 'bg-teal-600 text-white' : 'bg-slate-900 text-teal-400'
             }`}
           >
@@ -195,48 +144,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
           <button
             onClick={() => setActiveTab('auth')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${
+            className={`flex-1 flex items-center justify-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${
               activeTab === 'auth' ? 'bg-emerald-600 text-white' : 'bg-slate-900 text-emerald-400'
             }`}
           >
             <UserCheck className="h-3.5 w-3.5" />
             <span>{t.navLoginRegister}</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('hub')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${
-              activeTab === 'hub' ? 'bg-emerald-600 text-white' : 'bg-slate-900 text-slate-300'
-            }`}
-          >
-            <Warehouse className="h-3.5 w-3.5" />
-            <span>{t.navHubCenter}</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('sms')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${
-              activeTab === 'sms' ? 'bg-emerald-600 text-white' : 'bg-slate-900 text-slate-300'
-            }`}
-          >
-            <Smartphone className="h-3.5 w-3.5" />
-            <span>{t.navSmsBot}</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('arena')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${
-              activeTab === 'arena' ? 'bg-amber-600 text-white' : 'bg-slate-900 text-slate-300'
-            }`}
-          >
-            <Award className="h-3.5 w-3.5" />
-            <span>{t.navJudgeArena}</span>
-          </button>
-          <button
-            onClick={() => setActiveTab('deploy')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${
-              activeTab === 'deploy' ? 'bg-cyan-600 text-white' : 'bg-slate-900 text-slate-300'
-            }`}
-          >
-            <Cloud className="h-3.5 w-3.5" />
-            <span>{t.navCloudDeploy}</span>
           </button>
         </div>
       </div>

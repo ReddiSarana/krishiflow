@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
-import { FarmerPortal } from './components/FarmerPortal';
 import { HubCommandCenter } from './components/HubCommandCenter';
 import { SmsGatewaySimulator } from './components/SmsGatewaySimulator';
 import { SimulationArena } from './components/SimulationArena';
@@ -10,11 +9,11 @@ import { TelanganaCropsWindow } from './components/TelanganaCropsWindow';
 import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { api } from './services/api';
-import { CropProfile, DigitalPass, ProcurementHub, NotificationItem, SimulationResult, SlotRequest, QueueStage } from './types';
+import { CropProfile, DigitalPass, ProcurementHub, NotificationItem, SimulationResult, QueueStage } from './types';
 import { CheckCircle2, AlertCircle } from 'lucide-react';
 
 export function AppContent() {
-  const [activeTab, setActiveTab] = useState<'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth'>('farmer');
+  const [activeTab, setActiveTab] = useState<'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth'>('telangana');
   
   const [crops, setCrops] = useState<CropProfile[]>([]);
   const [hubs, setHubs] = useState<ProcurementHub[]>([]);
@@ -62,20 +61,6 @@ export function AppContent() {
     }, 4000);
     return () => clearInterval(timer);
   }, []);
-
-  const handleBookSlot = async (req: SlotRequest): Promise<DigitalPass | null> => {
-    const res = await api.bookSlot(req);
-    if (res.success && res.digital_pass) {
-      setPasses(prev => [res.digital_pass, ...prev]);
-      setActivePass(res.digital_pass);
-      showToast(`Slot Confirmed! Pass Token: ${res.digital_pass.pass_code}`, 'success');
-      
-      // Auto refresh logs
-      api.getNotificationLog().then(setNotifications);
-      return res.digital_pass;
-    }
-    return null;
-  };
 
   const handleUpdateStage = async (tokenId: string, stage: QueueStage, extraData?: Record<string, any>) => {
     const updated = await api.updateStage(tokenId, stage, extraData);
@@ -166,25 +151,14 @@ export function AppContent() {
         {activeTab === 'telangana' && (
           <TelanganaCropsWindow
             onSelectCropForBooking={(cropName) => {
-              setActiveTab('farmer');
-              showToast(`Pre-selected ${cropName} for Delivery Booking`, 'info');
+              setActiveTab('sms');
+              showToast(`Pre-selected ${cropName} for WhatsApp / SMS Gateway Booking`, 'info');
             }}
           />
         )}
 
         {activeTab === 'auth' && (
           <AuthPortal />
-        )}
-
-        {activeTab === 'farmer' && (
-          <FarmerPortal
-            crops={crops}
-            language="en"
-            onBookSlot={handleBookSlot}
-            activePass={activePass}
-            setActivePass={setActivePass}
-            onNavigateToAuth={() => setActiveTab('auth')}
-          />
         )}
 
         {activeTab === 'hub' && (

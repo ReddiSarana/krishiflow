@@ -15,8 +15,8 @@ import { useAuth } from '../context/AuthContext';
 import { useLanguage, SupportedLanguage } from '../context/LanguageContext';
 
 interface NavbarProps {
-  activeTab: 'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth';
-  setActiveTab: (tab: 'farmer' | 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth') => void;
+  activeTab: 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth';
+  setActiveTab: (tab: 'telangana' | 'hub' | 'sms' | 'arena' | 'deploy' | 'auth') => void;
   onResetDemo: () => void;
 }
 
@@ -34,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Brand Logo & Name */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('farmer')}>
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('telangana')}>
             <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-amber-400 p-[2px] shadow-lg shadow-emerald-900/30">
               <div className="h-full w-full bg-slate-950 rounded-[14px] flex items-center justify-center">
                 <Sprout className="h-6 w-6 text-emerald-400" />
@@ -57,18 +57,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Navigation Tabs */}
           <nav className="hidden lg:flex items-center space-x-1 p-1 rounded-2xl bg-slate-900/90 border border-slate-800">
-            <button
-              onClick={() => setActiveTab('farmer')}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                activeTab === 'farmer'
-                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-900/40 glow-emerald'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-              }`}
-            >
-              <Sprout className="h-4 w-4" />
-              <span>{t.navFarmerPwa}</span>
-            </button>
-
             {/* TELANGANA CROPS TAB */}
             <button
               onClick={() => setActiveTab('telangana')}
@@ -196,15 +184,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Mobile Navigation Tabs */}
         <div className="flex lg:hidden overflow-x-auto py-2.5 space-x-2 border-t border-slate-800/80 no-scrollbar">
-          <button
-            onClick={() => setActiveTab('farmer')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap ${
-              activeTab === 'farmer' ? 'bg-emerald-600 text-white' : 'bg-slate-900 text-slate-300'
-            }`}
-          >
-            <Sprout className="h-3.5 w-3.5" />
-            <span>{t.navFarmerPwa}</span>
-          </button>
           <button
             onClick={() => setActiveTab('telangana')}
             className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
